@@ -1,73 +1,419 @@
-# Welcome to your Lovable project
+# 🏥 EgyCare - منصة حجز المواعيد الطبية
 
-## Project info
+## 📋 نبذة عن المشروع
 
-**URL**: https://lovable.dev/projects/0bd42b13-6680-430e-91a1-5681410a3782
+EgyCare هي منصة طبية متكاملة لحجز المواعيد مع الأطباء في مصر. المشروع مبني باستخدام React + JavaScript + Bootstrap.
 
-## How can I edit this code?
+## 🎯 المميزات
 
-There are several ways of editing your application.
+- ✅ عرض التخصصات الطبية المختلفة
+- ✅ عرض الأطباء حسب كل تخصص
+- ✅ حجز مواعيد مع الأطباء
+- ✅ لوحة تحكم للأدمن لإدارة الحجوزات
+- ✅ تصميم متجاوب (Responsive) يعمل على الموبايل والكمبيوتر
+- ✅ بيانات ديناميكية من JSON API
 
-**Use Lovable**
+## 🛠️ التقنيات المستخدمة
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0bd42b13-6680-430e-91a1-5681410a3782) and start prompting.
+- **React** - مكتبة JavaScript لبناء واجهات المستخدم
+- **JavaScript (JSX)** - لغة البرمجة
+- **Bootstrap 5** - للتصميم والـ UI
+- **React Router** - للتنقل بين الصفحات
+- **LocalStorage** - لحفظ الحجوزات (بدلاً من قاعدة بيانات حقيقية)
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📁 هيكل المشروع
 
-**Use your preferred IDE**
+```
+src/
+├── components/          # المكونات القابلة لإعادة الاستخدام
+│   ├── Header.jsx      # شريط التنقل العلوي
+│   └── Footer.jsx      # تذييل الصفحة
+│
+├── pages/              # صفحات التطبيق
+│   ├── Home.jsx        # الصفحة الرئيسية
+│   ├── Specialties.jsx # صفحة جميع التخصصات
+│   ├── SpecialtyDoctors.jsx # صفحة أطباء تخصص معين
+│   ├── Booking.jsx     # صفحة حجز الموعد
+│   ├── AdminDashboard.jsx # لوحة تحكم الأدمن
+│   ├── About.jsx       # صفحة عن EgyCare
+│   ├── Contact.jsx     # صفحة التواصل
+│   └── NotFound.jsx    # صفحة 404
+│
+├── styles/
+│   └── custom.css      # ملف التنسيقات المخصصة
+│
+└── App.tsx             # المكون الرئيسي للتطبيق
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+public/
+└── data/               # ملفات JSON API
+    ├── specialties.json # بيانات التخصصات الطبية
+    └── doctors.json     # بيانات الأطباء
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🔧 كيفية التشغيل
 
-Follow these steps:
+### المتطلبات
+- Node.js (الإصدار 14 أو أحدث)
+- npm أو yarn
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### خطوات التشغيل
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **تثبيت المكتبات**
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2. **تشغيل المشروع**
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+3. **فتح المتصفح**
+- افتح المتصفح واذهب إلى: `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📚 شرح مفصل للكود
 
-**Use GitHub Codespaces**
+### 1. المكونات (Components)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+#### Header.jsx
+```javascript
+// المكون الخاص بشريط التنقل العلوي
+// يحتوي على:
+// - لوجو EgyCare
+// - روابط التنقل (الرئيسية، التخصصات، إلخ)
+// - responsive للموبايل
+```
 
-## What technologies are used for this project?
+#### Footer.jsx
+```javascript
+// المكون الخاص بتذييل الصفحة
+// يحتوي على:
+// - معلومات عن EgyCare
+// - روابط سريعة
+// - معلومات التواصل
+```
 
-This project is built with:
+### 2. الصفحات (Pages)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+#### Home.jsx
+```javascript
+// الصفحة الرئيسية
+// 
+// useState: لحفظ التخصصات في state
+// useEffect: لجلب البيانات من JSON عند تحميل الصفحة
+// 
+// الخطوات:
+// 1. عند تحميل الصفحة، يتم استدعاء useEffect
+// 2. useEffect يستخدم fetch لجلب البيانات من /data/specialties.json
+// 3. البيانات تُحفظ في state باستخدام setSpecialties
+// 4. البيانات تُعرض في cards على الصفحة
+```
 
-## How can I deploy this project?
+#### Booking.jsx
+```javascript
+// صفحة حجز الموعد
+//
+// useParams: للحصول على ID الدكتور من URL
+// useState: لحفظ بيانات الفورم
+//
+// الخطوات:
+// 1. جلب معلومات الدكتور من doctors.json
+// 2. عرض معلومات الدكتور
+// 3. عرض فورم الحجز
+// 4. عند الضغط على "تأكيد الحجز":
+//    - جمع بيانات الفورم
+//    - إنشاء object للحجز
+//    - حفظ الحجز في localStorage
+//    - عرض رسالة نجاح
+//    - الانتقال للصفحة الرئيسية
+```
 
-Simply open [Lovable](https://lovable.dev/projects/0bd42b13-6680-430e-91a1-5681410a3782) and click on Share -> Publish.
+#### AdminDashboard.jsx
+```javascript
+// لوحة التحكم للأدمن
+//
+// الوظائف:
+// 1. loadAppointments: جلب الحجوزات من localStorage
+// 2. updateStatus: تغيير حالة الحجز (قيد الانتظار / مؤكد / ملغي)
+// 3. deleteAppointment: حذف حجز
+//
+// الخطوات:
+// 1. عند تحميل الصفحة، يتم جلب الحجوزات من localStorage
+// 2. عرض الحجوزات في جدول (table)
+// 3. يمكن للأدمن:
+//    - تأكيد الحجز
+//    - إلغاء الحجز
+//    - حذف الحجز
+```
 
-## Can I connect a custom domain to my Lovable project?
+### 3. JSON API
 
-Yes, you can!
+#### specialties.json
+```json
+// ملف يحتوي على التخصصات الطبية
+// كل تخصص له:
+// - id: رقم فريد
+// - name: الاسم بالإنجليزية
+// - nameAr: الاسم بالعربية
+// - icon: اسم الأيقونة
+// - description: وصف التخصص
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+#### doctors.json
+```json
+// ملف يحتوي على الأطباء
+// كل دكتور له:
+// - id: رقم فريد
+// - name: الاسم
+// - specialtyId: رقم التخصص
+// - rating: التقييم
+// - experience: سنوات الخبرة
+// - price: سعر الكشف
+// - availableDays: الأيام المتاحة
+// - availableTimes: الأوقات المتاحة
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 💾 كيف يعمل حفظ الحجوزات؟
+
+المشروع يستخدم **localStorage** لحفظ الحجوزات:
+
+```javascript
+// حفظ حجز جديد
+const appointment = { /* بيانات الحجز */ };
+const existingAppointments = JSON.parse(
+  localStorage.getItem('appointments') || '[]'
+);
+existingAppointments.push(appointment);
+localStorage.setItem('appointments', JSON.stringify(existingAppointments));
+
+// قراءة الحجوزات
+const appointments = JSON.parse(
+  localStorage.getItem('appointments') || '[]'
+);
+```
+
+**ملحوظة**: localStorage يحفظ البيانات في المتصفح فقط. لو تريد حفظ البيانات بشكل دائم، يجب استخدام قاعدة بيانات حقيقية.
+
+## 🎨 التصميم (Styling)
+
+### Bootstrap Classes المستخدمة
+
+```css
+/* Container - للحفاظ على العرض مناسب */
+.container
+
+/* Row & Col - للـ Grid System */
+.row
+.col-md-4
+.col-lg-6
+
+/* Cards - للبطاقات */
+.card
+.card-body
+.card-title
+
+/* Buttons - للأزرار */
+.btn
+.btn-primary
+.btn-lg
+
+/* Forms - للـ Forms */
+.form-control
+.form-label
+.form-select
+
+/* Spacing - للمسافات */
+.mb-3    /* margin-bottom: 1rem */
+.py-5    /* padding-top & bottom: 3rem */
+```
+
+### Custom CSS
+
+```css
+/* الألوان الأساسية */
+--egycare-primary: #1e5a8e    /* الأزرق الأساسي */
+--egycare-secondary: #2c7ec4  /* الأزرق الفاتح */
+
+/* Hero Section - القسم الرئيسي */
+.hero-section {
+  background: linear-gradient(...);
+  color: white;
+  padding: 4rem 0;
+}
+
+/* Specialty Cards - كروت التخصصات */
+.specialty-card:hover {
+  transform: translateY(-5px);  /* تحرك للأعلى عند hover */
+  box-shadow: ...;
+}
+```
+
+## 📱 الصفحات والروابط
+
+| الصفحة | المسار | الوصف |
+|--------|--------|-------|
+| الرئيسية | `/` | الصفحة الرئيسية |
+| التخصصات | `/specialties` | جميع التخصصات |
+| أطباء التخصص | `/specialty/:id` | أطباء تخصص معين |
+| حجز موعد | `/booking/:doctorId` | حجز موعد مع دكتور |
+| لوحة التحكم | `/admin` | إدارة الحجوزات |
+| عن EgyCare | `/about` | معلومات عن المنصة |
+| تواصل معنا | `/contact` | نموذج التواصل |
+
+## 🔄 Flow الحجز (Booking Flow)
+
+```
+1. المستخدم يفتح الصفحة الرئيسية
+   ↓
+2. يختار تخصص طبي
+   ↓
+3. يشاهد قائمة الأطباء في هذا التخصص
+   ↓
+4. يختار دكتور ويضغط "احجز الآن"
+   ↓
+5. يملأ بيانات الحجز (الاسم، الهاتف، اليوم، الوقت)
+   ↓
+6. يضغط "تأكيد الحجز"
+   ↓
+7. يتم حفظ الحجز في localStorage
+   ↓
+8. يظهر الحجز في لوحة تحكم الأدمن
+```
+
+## 🎓 مفاهيم مهمة للمبتدئين
+
+### 1. React Hooks
+
+```javascript
+// useState - لحفظ البيانات في state
+const [count, setCount] = useState(0);
+
+// useEffect - لتنفيذ كود عند تحميل الصفحة
+useEffect(() => {
+  // هذا الكود يعمل مرة واحدة عند تحميل الصفحة
+}, []);
+
+// useParams - للحصول على parameters من URL
+const { id } = useParams();
+
+// useNavigate - للانتقال لصفحة أخرى
+const navigate = useNavigate();
+navigate('/home');
+```
+
+### 2. Array Methods
+
+```javascript
+// map - لعرض قائمة من البيانات
+doctors.map(doctor => (
+  <div key={doctor.id}>{doctor.name}</div>
+));
+
+// filter - لتصفية البيانات
+const filtered = doctors.filter(d => d.specialtyId === 1);
+
+// find - للبحث عن عنصر معين
+const doctor = doctors.find(d => d.id === 5);
+```
+
+### 3. Fetch API
+
+```javascript
+// جلب البيانات من JSON file
+fetch('/data/doctors.json')
+  .then(response => response.json())  // تحويل الـ response لـ JSON
+  .then(data => {
+    console.log(data);  // استخدام البيانات
+  })
+  .catch(error => {
+    console.error(error);  // معالجة الأخطاء
+  });
+```
+
+### 4. LocalStorage
+
+```javascript
+// حفظ بيانات
+localStorage.setItem('key', 'value');
+
+// قراءة بيانات
+const value = localStorage.getItem('key');
+
+// حفظ array أو object
+localStorage.setItem('data', JSON.stringify(myArray));
+
+// قراءة array أو object
+const data = JSON.parse(localStorage.getItem('data'));
+```
+
+## 🚀 التطوير المستقبلي
+
+### ميزات يمكن إضافتها:
+
+1. **قاعدة بيانات حقيقية**
+   - استخدام Supabase أو Firebase
+   - حفظ الحجوزات بشكل دائم
+
+2. **نظام تسجيل الدخول**
+   - تسجيل دخول للمرضى
+   - تسجيل دخول للأطباء
+   - تسجيل دخول للأدمن
+
+3. **إشعارات**
+   - إشعار عند تأكيد الحجز
+   - تذكير بالموعد قبل يوم
+
+4. **الدفع الإلكتروني**
+   - الدفع أونلاين
+   - فاتورة إلكترونية
+
+5. **تقييمات الأطباء**
+   - تقييم الدكتور بعد الزيارة
+   - قراءة تقييمات المرضى السابقين
+
+## 🐛 حل المشاكل الشائعة
+
+### مشكلة: الصور لا تظهر
+```javascript
+// الحل: تأكد من مسار الصورة صحيح
+// إذا الصورة في public/images/doctor.jpg
+<img src="/images/doctor.jpg" alt="Doctor" />
+```
+
+### مشكلة: البيانات لا تظهر
+```javascript
+// الحل: تحقق من:
+// 1. مسار JSON file صحيح
+// 2. fetch يعمل في useEffect
+// 3. state تم تحديثه بالبيانات
+console.log(doctors); // للتحقق من البيانات
+```
+
+### مشكلة: الحجوزات لا تُحفظ
+```javascript
+// الحل: تأكد من:
+// 1. localStorage.setItem يعمل
+// 2. JSON.stringify للـ array
+// 3. لا توجد أخطاء في console
+```
+
+## 📞 الدعم
+
+إذا واجهت أي مشكلة:
+1. تحقق من console في المتصفح (F12)
+2. راجع الكود خطوة بخطوة
+3. اقرأ رسائل الأخطاء بعناية
+
+## 📄 الترخيص
+
+هذا المشروع مفتوح المصدر للأغراض التعليمية.
+
+---
+
+**ملاحظة**: هذا المشروع للتعلم فقط. لا تستخدمه في production بدون إضافة:
+- قاعدة بيانات حقيقية
+- نظام authentication
+- تشفير البيانات الحساسة
+- معالجة الأخطاء بشكل أفضل
+
+تم بناء المشروع بـ ❤️ لتعليم React + Bootstrap
