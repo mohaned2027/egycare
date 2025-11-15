@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Cardiology",
+    "nameAr": "القلب والأوعية الدموية",
+    "icon": "heart",
+    "description": "Heart and blood vessel care",
+    "descriptionAr": "رعاية القلب والأوعية الدموية"
+  },
+  {
+    "id": 2,
+    "name": "Dermatology",
+    "nameAr": "الجلدية",
+    "icon": "droplet",
+    "description": "Skin, hair, and nails care",
+    "descriptionAr": "رعاية الجلد والشعر والأظافر"
+  },
+  {
+    "id": 3,
+    "name": "Pediatrics",
+    "nameAr": "طب الأطفال",
+    "icon": "baby",
+    "description": "Children's healthcare",
+    "descriptionAr": "رعاية صحة الأطفال"
+  },
+  {
+    "id": 4,
+    "name": "Orthopedics",
+    "nameAr": "العظام",
+    "icon": "bone",
+    "description": "Bone and joint care",
+    "descriptionAr": "رعاية العظام والمفاصل"
+  },
+  {
+    "id": 5,
+    "name": "Neurology",
+    "nameAr": "الأعصاب",
+    "icon": "brain",
+    "description": "Brain and nervous system",
+    "descriptionAr": "رعاية المخ والجهاز العصبي"
+  },
+  {
+    "id": 6,
+    "name": "Ophthalmology",
+    "nameAr": "العيون",
+    "icon": "eye",
+    "description": "Eye care and vision",
+    "descriptionAr": "رعاية العيون والبصر"
+  }
+]
