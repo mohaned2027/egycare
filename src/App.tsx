@@ -6,10 +6,12 @@ import Specialties from "./pages/Specialties";
 import SpecialtyDoctors from "./pages/SpecialtyDoctors";
 import Booking from "./pages/Booking";
 import AdminDashboard from "./pages/AdminDashboard";
+import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Login from "./components/Login";
+import Profile from "./components/Profile";
 // استيراد مكون الحماية
 import ProtectedRoute from "./routes/ProtectedRoute";
 // استيراد Bootstrap styles
@@ -42,6 +44,26 @@ const App = () => {
         
         {/* صفحة تسجيل الدخول */}
         <Route path="/login" element={<Login />} />
+        
+        {/* لوحة تحكم المريض - محمية */}
+        <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } 
+        />
+        
+        {/* صفحة الملف الشخصي - محمية */}
+        <Route 
+          path="/profile" 
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } 
+        />
         
         {/* لوحة تحكم الأدمن */}
         <Route path="/admin" element={<AdminDashboard />} />

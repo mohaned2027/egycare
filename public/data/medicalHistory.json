@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "patientId": 1,
+    "title": "فحص القلب الشامل",
+    "doctorName": "د. أحمد حسن",
+    "date": "2024-02-20",
+    "type": "Diagnosis",
+    "description": "فحص دوري للقلب - النتائج طبيعية",
+    "fileUrl": "#"
+  },
+  {
+    "id": 2,
+    "patientId": 1,
+    "title": "تقرير الأشعة السينية",
+    "doctorName": "د. سارة محمد",
+    "date": "2024-01-15",
+    "type": "Test",
+    "description": "أشعة على الصدر - لا توجد مشاكل",
+    "fileUrl": "#"
+  },
+  {
+    "id": 3,
+    "patientId": 1,
+    "title": "وصفة طبية للضغط",
+    "doctorName": "د. أحمد حسن",
+    "date": "2024-02-01",
+    "type": "Prescription",
+    "description": "أدوية لتنظيم ضغط الدم",
+    "fileUrl": "#"
+  }
+]

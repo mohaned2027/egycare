@@ -4,7 +4,7 @@
 export const login = async (email, password) => {
   try {
     // جلب بيانات المستخدمين من API
-    const response = await fetch('/data/users.json');
+    const response = await fetch('/data/patients.json');
     const users = await response.json();
     
     // البحث عن المستخدم بالبريد الإلكتروني وكلمة المرور
@@ -20,7 +20,8 @@ export const login = async (email, password) => {
         id: user.id,
         name: user.name,
         email: user.email,
-        phone: user.phone
+        phone: user.phone,
+        profileImage: user.profileImage
       }));
       
       return { success: true, user };
