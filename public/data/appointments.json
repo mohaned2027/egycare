@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "patientId": 1,
+    "doctorId": 1,
+    "doctorName": "د. أحمد حسن",
+    "doctorImage": "/placeholder.svg",
+    "specialty": "القلب والأوعية الدموية",
+    "medicalCenter": "مستشفى دار الفؤاد",
+    "date": "2024-03-25",
+    "time": "10:00 AM",
+    "status": "confirmed",
+    "notes": "فحص دوري"
+  },
+  {
+    "id": 2,
+    "patientId": 1,
+    "doctorId": 3,
+    "doctorName": "د. منى علي",
+    "doctorImage": "/placeholder.svg",
+    "specialty": "الجلدية",
+    "medicalCenter": "عيادة الجلدية المتقدمة",
+    "date": "2024-03-28",
+    "time": "2:00 PM",
+    "status": "pending",
+    "notes": "استشارة جلدية"
+  },
+  {
+    "id": 3,
+    "patientId": 1,
+    "doctorId": 5,
+    "doctorName": "د. نادية سالم",
+    "doctorImage": "/placeholder.svg",
+    "specialty": "طب الأطفال",
+    "medicalCenter": "مستشفى الأطفال",
+    "date": "2024-02-15",
+    "time": "11:00 AM",
+    "status": "cancelled",
+    "notes": "تم الإلغاء"
+  }
+]

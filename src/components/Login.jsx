@@ -39,9 +39,8 @@ const Login = () => {
     
     if (result.success) {
       // إذا نجح تسجيل الدخول
-      // الانتقال للصفحة المطلوبة أو الصفحة الرئيسية
-      const from = location.state?.from?.pathname || '/';
-      navigate(from, { replace: true });
+      // الانتقال للوحة التحكم
+      navigate('/dashboard', { replace: true });
     } else {
       // إذا فشل تسجيل الدخول
       setError(result.message);

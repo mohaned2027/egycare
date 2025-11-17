@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "patientId": 1,
+    "medicationName": "كونكور 5 مجم",
+    "doctorName": "د. أحمد حسن",
+    "date": "2024-02-20",
+    "dosage": "قرص واحد يومياً",
+    "duration": "شهر واحد",
+    "fileUrl": "#"
+  },
+  {
+    "id": 2,
+    "patientId": 1,
+    "medicationName": "أسبرين 100 مجم",
+    "doctorName": "د. أحمد حسن",
+    "date": "2024-02-20",
+    "dosage": "قرص واحد يومياً بعد الأكل",
+    "duration": "شهرين",
+    "fileUrl": "#"
+  },
+  {
+    "id": 3,
+    "patientId": 1,
+    "medicationName": "فيتامين د 5000",
+    "doctorName": "د. سارة محمد",
+    "date": "2024-01-15",
+    "dosage": "كبسولة واحدة أسبوعياً",
+    "duration": "3 أشهر",
+    "fileUrl": "#"
+  }
+]

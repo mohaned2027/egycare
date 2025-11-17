@@ -61,18 +61,46 @@ const Header = () => {
           {/* Login/Logout buttons */}
           <div className="d-flex align-items-center ms-3">
             {isLoggedIn ? (
-              <div className="d-flex align-items-center">
-                <span className="text-white me-3">
-                  <i className="bi bi-person-circle me-1"></i>
-                  {currentUser?.name}
-                </span>
+              <div className="dropdown">
                 <button 
-                  onClick={handleLogout}
-                  className="btn btn-outline-light btn-sm"
+                  className="btn btn-link text-white text-decoration-none dropdown-toggle d-flex align-items-center p-0"
+                  type="button"
+                  id="userDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
-                  <i className="bi bi-box-arrow-right me-1"></i>
-                  تسجيل الخروج
+                  <img 
+                    src={currentUser?.profileImage || '/placeholder.svg'} 
+                    alt={currentUser?.name}
+                    className="rounded-circle me-2"
+                    style={{ width: '40px', height: '40px', objectFit: 'cover' }}
+                  />
+                  <span className="text-white">{currentUser?.name}</span>
                 </button>
+                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                  <li>
+                    <Link className="dropdown-item" to="/dashboard">
+                      <i className="bi bi-speedometer2 me-2"></i>
+                      لوحة التحكم
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/profile">
+                      <i className="bi bi-person-circle me-2"></i>
+                      الملف الشخصي
+                    </Link>
+                  </li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li>
+                    <button 
+                      className="dropdown-item text-danger"
+                      onClick={handleLogout}
+                    >
+                      <i className="bi bi-box-arrow-right me-2"></i>
+                      تسجيل الخروج
+                    </button>
+                  </li>
+                </ul>
               </div>
             ) : (
               <Link to="/login" className="btn btn-outline-light btn-sm">

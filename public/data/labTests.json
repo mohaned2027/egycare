@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "patientId": 1,
+    "testName": "تحليل صورة دم كاملة",
+    "labName": "معمل المختبر",
+    "date": "2024-02-25",
+    "status": "completed",
+    "fileUrl": "#"
+  },
+  {
+    "id": 2,
+    "patientId": 1,
+    "testName": "تحليل وظائف الكلى",
+    "labName": "معمل البرج",
+    "date": "2024-02-10",
+    "status": "completed",
+    "fileUrl": "#"
+  },
+  {
+    "id": 3,
+    "patientId": 1,
+    "testName": "تحليل السكر التراكمي",
+    "labName": "معمل المختبر",
+    "date": "2024-01-20",
+    "status": "completed",
+    "fileUrl": "#"
+  }
+]
