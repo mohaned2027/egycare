@@ -49,15 +49,14 @@ const Header = () => {
         <button
           className="navbar-toggler border-0"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
           style={{ color: '#0B5FA5' }}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         {/* Navigation Links */}
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
               <Link

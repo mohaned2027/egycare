@@ -58,6 +58,55 @@ body {
   color: var(--egycare-primary) !important;
 }
 
+/* Responsive Navbar */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--egycare-border);
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+
+  .navbar-collapse {
+    background-color: var(--egycare-white);
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .navbar-collapse.show {
+    max-height: 500px;
+    padding: 1rem;
+    margin-top: 1rem;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .d-flex.align-items-center {
+    margin-top: 1rem;
+    justify-content: center !important;
+  }
+
+  .btn-sm {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
 /* Hero Section - Modern Design with Background Image */
 .hero-section {
   background: linear-gradient(135deg, #0b5fa5 0%, #0e74c7 100%);
