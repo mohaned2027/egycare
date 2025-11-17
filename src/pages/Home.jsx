@@ -1,3 +1,4 @@
+// Home Page - Main landing page
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -17,13 +18,13 @@ const Home = () => {
       fetch('/data/doctors.json').then(res => res.json())
     ])
       .then(([specialtiesData, doctorsData]) => {
-        setSpecialties(specialtiesData.slice(0, 6)); // أول 6 تخصصات
+        setSpecialties(specialtiesData.slice(0, 6)); // First 6 specialties
         setDoctors(doctorsData);
         setLoading(false);
-        setFilteredDoctors(doctorsData); // عرض كل الدكاترة أول مرة
+        setFilteredDoctors(doctorsData); // Show all doctors initially
       })
       .catch(error => {
-        console.error('خطأ في جلب البيانات:', error);
+        console.error('Error fetching data:', error);
         setLoading(false);
       });
   }, []);
@@ -70,14 +71,14 @@ const Home = () => {
                 <span style={{ color: '#00D4FF' }}>Healthcare</span>
               </h1>
               <p className="mb-4">
-                احجز المواعيد الطبية وإدارة التاريخ الطبي الخاص بك بسرعة وأمان وكفاءة مع أفضل الأطباء المعتمدين في مصر
+                Book medical appointments and manage your medical history quickly, safely, and efficiently with the best certified doctors in Egypt
               </p>
               <div className="d-flex gap-3 justify-content-lg-start justify-content-center">
                 <Link to="/specialties" className="btn btn-light btn-lg">
-                  احجز موعدك الآن
+                  Book Your Appointment Now
                 </Link>
                 <Link to="/dashboard" className="btn btn-outline-primary btn-lg" style={{ backgroundColor: 'rgba(255,255,255,0.2)', borderColor: 'white', color: 'white' }}>
-                  لوحة التحكم
+                  Dashboard
                 </Link>
               </div>
             </div>
@@ -85,12 +86,12 @@ const Home = () => {
             <div className="col-lg-6 mt-5 mt-lg-0">
               {/* Quick Search Card */}
               <div className="quick-search-card">
-                <h3>بحث سريع</h3>
+                <h3>Quick Search</h3>
                 <form>
                   <div className="mb-3">
-                    <label className="form-label text-end w-100">اختر التخصص</label>
+                    <label className="form-label">Choose Specialty</label>
                     <select className="form-select" onChange={handleSpecialtyChange}>
-                      <option value="">اختر التخصص</option>
+                      <option value="">Choose Specialty</option>
                       {specialties.map((specialty) => (
                         <option key={specialty.id} value={specialty.id}>
                           {specialty.nameAr}
@@ -100,9 +101,9 @@ const Home = () => {
                   </div>
 
                   <div className="mb-3">
-                    <label className="form-label text-end w-100">اختر الطبيب</label>
+                    <label className="form-label">Choose Doctor</label>
                     <select className="form-select">
-                      <option value="">اختر الطبيب</option>
+                      <option value="">Choose Doctor</option>
                       {filteredDoctors.map((doctor) => (
                         <option key={doctor.id} value={doctor.id}>
                           {doctor.name}
@@ -112,23 +113,23 @@ const Home = () => {
                   </div>
 
                   <div className="mb-3">
-                    <label className="form-label text-end w-100">اختر المحافظة</label>
+                    <label className="form-label">Choose Governorate</label>
                     <select className="form-select">
-                      <option value="">اختر المحافظة</option>
-                      <option value="cairo">القاهرة</option>
-                      <option value="giza">الجيزة</option>
-                      <option value="alex">الإسكندرية</option>
+                      <option value="">Choose Governorate</option>
+                      <option value="cairo">Cairo</option>
+                      <option value="giza">Giza</option>
+                      <option value="alex">Alexandria</option>
                     </select>
                   </div>
 
                   <div className="mb-3">
-                    <label className="form-label text-end w-100">اختر التاريخ</label>
+                    <label className="form-label">Choose Date</label>
                     <input type="date" className="form-control" />
                   </div>
 
                   <Link to="/specialties" className="btn btn-primary w-100">
                     <i className="bi bi-search me-2"></i>
-                    ابحث عن طبيب
+                    Search for Doctor
                   </Link>
                 </form>
               </div>
@@ -137,13 +138,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* باقي الأقسام كما في النسخة السابقة */}
       {/* Why EgyCare Section */}
       <section className="py-5">
         <div className="container">
-          <h2 className="section-title">لماذا EgyCare؟</h2>
+          <h2 className="section-title">Why EgyCare?</h2>
           <p className="section-subtitle">
-            نقدم لك تجربة طبية شاملة باستخدام أحدث التقنيات وأعلى معايير الجودة
+            We provide you with a comprehensive medical experience using the latest technologies and highest quality standards
           </p>
           <div className="row g-4">
             <div className="col-md-3 col-6">
@@ -151,8 +151,8 @@ const Home = () => {
                 <div className="feature-icon">
                   <i className="bi bi-clock"></i>
                 </div>
-                <h4>متاح 24/7</h4>
-                <p>خدمة متاحة على مدار الساعة لراحتك</p>
+                <h4>Available 24/7</h4>
+                <p>Service available around the clock for your convenience</p>
               </div>
             </div>
             <div className="col-md-3 col-6">
@@ -160,8 +160,8 @@ const Home = () => {
                 <div className="feature-icon">
                   <i className="bi bi-calendar-check"></i>
                 </div>
-                <h4>حجز سريع وسهل</h4>
-                <p>احجز موعدك في خطوات بسيطة</p>
+                <h4>Quick & Easy Booking</h4>
+                <p>Book your appointment in simple steps</p>
               </div>
             </div>
             <div className="col-md-3 col-6">
@@ -169,8 +169,8 @@ const Home = () => {
                 <div className="feature-icon">
                   <i className="bi bi-shield-check"></i>
                 </div>
-                <h4>تاريخ طبي آمن</h4>
-                <p>إدارة آمنة للسجلات والتاريخ الطبي</p>
+                <h4>Secure Medical History</h4>
+                <p>Safe management of medical records and history</p>
               </div>
             </div>
             <div className="col-md-3 col-6">
@@ -178,8 +178,8 @@ const Home = () => {
                 <div className="feature-icon">
                   <i className="bi bi-patch-check"></i>
                 </div>
-                <h4>أطباء معتمدون</h4>
-                <p>شبكة من أفضل الأطباء المؤهلين</p>
+                <h4>Certified Doctors</h4>
+                <p>Network of the best qualified doctors</p>
               </div>
             </div>
           </div>
@@ -189,8 +189,8 @@ const Home = () => {
       {/* Medical Specialties Section */}
       <section className="py-5 bg-light-egycare">
         <div className="container">
-          <h2 className="section-title">التخصصات الطبية</h2>
-          <p className="section-subtitle">احجز مع أفضل الأطباء في جميع التخصصات</p>
+          <h2 className="section-title">Medical Specialties</h2>
+          <p className="section-subtitle">Book with the best doctors in all specialties</p>
 
           {loading ? (
             <div className="text-center">
@@ -213,7 +213,7 @@ const Home = () => {
                       <h5>{specialty.nameAr}</h5>
                       <p className="small mb-0">{specialty.descriptionAr}</p>
                       <span className="badge bg-light text-dark mt-2">
-                        {doctorCount} طبيب
+                        {doctorCount} doctor
                       </span>
                     </Link>
                   </div>
@@ -224,7 +224,7 @@ const Home = () => {
 
           <div className="text-center mt-5">
             <Link to="/specialties" className="btn btn-outline-primary btn-lg">
-              عرض جميع التخصصات
+              View All Specialties
             </Link>
           </div>
         </div>
@@ -233,22 +233,22 @@ const Home = () => {
       {/* Patient Reviews Section */}
       <section className="py-5">
         <div className="container">
-          <h2 className="section-title">آراء مرضانا</h2>
-          <p className="section-subtitle">ماذا يقول مرضانا عن تجربتهم معنا</p>
-          {/* ... Reviews كما في النسخة السابقة ... */}
+          <h2 className="section-title">Our Patients' Reviews</h2>
+          <p className="section-subtitle">What our patients say about their experience with us</p>
+          {/* ... Reviews as in the previous version ... */}
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-5 bg-light-egycare">
         <div className="container text-center">
-          <h2 className="section-title">ابدأ رحلتك الصحية اليوم</h2>
+          <h2 className="section-title">Start Your Health Journey Today</h2>
           <p className="section-subtitle">
-            انضم لآلاف المرضى الذين يثقون في EgyCare لرعايتهم الصحية
+            Join thousands of patients who trust EgyCare for their healthcare
           </p>
           <div className="d-flex gap-3 justify-content-center">
-            <Link to="/specialties" className="btn btn-primary btn-lg">احجز موعدك الأول</Link>
-            <Link to="/contact" className="btn btn-outline-primary btn-lg">ابحث عن رعاية طارئة</Link>
+            <Link to="/specialties" className="btn btn-primary btn-lg">Book Your First Appointment</Link>
+            <Link to="/contact" className="btn btn-outline-primary btn-lg">Find Emergency Care</Link>
           </div>
         </div>
       </section>

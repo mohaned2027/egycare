@@ -1,6 +1,6 @@
-// Main App Component - المكون الرئيسي للتطبيق
+// Main App Component - The main application component
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// استيراد الصفحات
+// Import pages
 import Home from "./pages/Home";
 import Specialties from "./pages/Specialties";
 import SpecialtyDoctors from "./pages/SpecialtyDoctors";
@@ -12,11 +12,11 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-// استيراد مكون الحماية
+// Import protection component
 import ProtectedRoute from "./routes/ProtectedRoute";
-// استيراد Bootstrap styles
+// Import Bootstrap styles
 import 'bootstrap/dist/css/bootstrap.min.css';
-// استيراد Custom styles
+// Import Custom styles
 import './styles/custom.css';
 
 const App = () => {
