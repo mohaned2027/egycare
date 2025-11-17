@@ -9,6 +9,9 @@ import AdminDashboard from "./pages/AdminDashboard";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Login from "./components/Login";
+// استيراد مكون الحماية
+import ProtectedRoute from "./routes/ProtectedRoute";
 // استيراد Bootstrap styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 // استيراد Custom styles
@@ -27,8 +30,18 @@ const App = () => {
         {/* صفحة أطباء تخصص معين */}
         <Route path="/specialty/:id" element={<SpecialtyDoctors />} />
         
-        {/* صفحة حجز موعد مع دكتور */}
-        <Route path="/booking/:doctorId" element={<Booking />} />
+        {/* صفحة حجز موعد مع دكتور - محمية (تحتاج تسجيل دخول) */}
+        <Route 
+          path="/booking/:doctorId" 
+          element={
+            <ProtectedRoute>
+              <Booking />
+            </ProtectedRoute>
+          } 
+        />
+        
+        {/* صفحة تسجيل الدخول */}
+        <Route path="/login" element={<Login />} />
         
         {/* لوحة تحكم الأدمن */}
         <Route path="/admin" element={<AdminDashboard />} />

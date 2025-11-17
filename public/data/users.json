@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "أحمد محمد",
+    "email": "ahmed@example.com",
+    "password": "123456",
+    "phone": "01012345678",
+    "token": "token_ahmed_123"
+  },
+  {
+    "id": 2,
+    "name": "فاطمة علي",
+    "email": "fatma@example.com",
+    "password": "123456",
+    "phone": "01098765432",
+    "token": "token_fatma_456"
+  },
+  {
+    "id": 3,
+    "name": "محمود حسن",
+    "email": "mahmoud@example.com",
+    "password": "123456",
+    "phone": "01123456789",
+    "token": "token_mahmoud_789"
+  }
+]
