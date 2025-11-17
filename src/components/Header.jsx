@@ -50,12 +50,6 @@ const Header = () => {
             <li className="nav-item">
               <Link className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`} to="/contact">تواصل معنا</Link>
             </li>
-            <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/admin' ? 'active' : ''}`} to="/admin">
-                <i className="bi bi-gear me-1"></i>
-                لوحة التحكم
-              </Link>
-            </li>
           </ul>
           
           {/* Login/Logout buttons */}
