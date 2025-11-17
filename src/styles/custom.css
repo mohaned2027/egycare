@@ -1,225 +1,610 @@
-/* EgyCare Custom Styles */
+/* EgyCare Custom Styles - New Professional Design */
 
 :root {
-  --egycare-primary: #1e5a8e;
-  --egycare-secondary: #2c7ec4;
-  --egycare-light: #f8f9fa;
-  --egycare-dark: #0d3b5c;
+  --egycare-primary: #0B5FA5;
+  --egycare-secondary: #0E74C7;
+  --egycare-light: #F5F7FA;
+  --egycare-dark: #1A3A52;
+  --egycare-accent: #00A3E0;
+  --egycare-success: #10B981;
+  --egycare-warning: #F59E0B;
+  --egycare-danger: #EF4444;
+  --egycare-text: #1F2937;
+  --egycare-text-light: #6B7280;
+  --egycare-border: #E5E7EB;
+  --egycare-white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   direction: rtl;
+  background-color: var(--egycare-light);
+  color: var(--egycare-text);
+  line-height: 1.6;
 }
 
-/* Header Styles */
+/* Header Styles - Modern Design */
 .navbar {
-  background-color: var(--egycare-primary) !important;
-  padding: 1rem 0;
+  background-color: var(--egycare-white) !important;
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--egycare-border);
 }
 
 .navbar-brand {
-  color: white !important;
+  color: var(--egycare-primary) !important;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0 0.5rem;
+  color: var(--egycare-text) !important;
+  margin: 0 0.75rem;
   transition: color 0.3s;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-.nav-link:hover {
-  color: white !important;
+.nav-link:hover,
+.nav-link.active {
+  color: var(--egycare-primary) !important;
 }
 
-/* Hero Section */
+/* Hero Section - Modern Design with Background Image */
 .hero-section {
-  background: linear-gradient(135deg, var(--egycare-primary) 0%, var(--egycare-secondary) 100%);
+  background: linear-gradient(135deg, #0B5FA5 0%, #0E74C7 100%);
   color: white;
-  padding: 4rem 0;
+  padding: 6rem 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .hero-section h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-section p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Specialty Cards */
+/* Quick Search Card */
+.quick-search-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.quick-search-card h3 {
+  color: var(--egycare-text);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Specialty Cards - New Grid Design */
 .specialty-card {
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+  border: 1px solid var(--egycare-border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--egycare-text);
 }
 
 .specialty-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(11, 95, 165, 0.15);
+  border-color: var(--egycare-primary);
+  text-decoration: none;
 }
 
-.specialty-card .card-body {
-  text-align: center;
-  padding: 2rem 1rem;
+.specialty-card-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 2.25rem;
+  transition: transform 0.3s ease;
 }
 
-.specialty-icon {
-  font-size: 3rem;
-  color: var(--egycare-primary);
-  margin-bottom: 1rem;
+.specialty-card:hover .specialty-card-icon {
+  transform: scale(1.1);
 }
 
-/* Doctor Cards */
+.specialty-card h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--egycare-text);
+}
+
+.specialty-card p {
+  font-size: 0.875rem;
+  color: var(--egycare-text-light);
+  margin: 0;
+}
+
+.specialty-card .badge {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+}
+
+/* Icon Colors for Different Specialties */
+.icon-blue { background-color: rgba(59, 130, 246, 0.1); color: #3B82F6; }
+.icon-red { background-color: rgba(239, 68, 68, 0.1); color: #EF4444; }
+.icon-purple { background-color: rgba(147, 51, 234, 0.1); color: #9333EA; }
+.icon-green { background-color: rgba(16, 185, 129, 0.1); color: #10B981; }
+.icon-yellow { background-color: rgba(245, 158, 11, 0.1); color: #F59E0B; }
+.icon-indigo { background-color: rgba(99, 102, 241, 0.1); color: #6366F1; }
+.icon-pink { background-color: rgba(236, 72, 153, 0.1); color: #EC4899; }
+.icon-teal { background-color: rgba(20, 184, 166, 0.1); color: #14B8A6; }
+.icon-orange { background-color: rgba(249, 115, 22, 0.1); color: #F97316; }
+.icon-cyan { background-color: rgba(6, 182, 212, 0.1); color: #06B6D4; }
+
+/* Doctor Cards - Professional Design */
 .doctor-card {
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+  border: 1px solid var(--egycare-border);
+  border-radius: 16px;
   overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .doctor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(11, 95, 165, 0.15);
+  border-color: var(--egycare-primary);
 }
 
 .doctor-image {
   width: 100%;
-  height: 200px;
+  height: 240px;
   object-fit: cover;
+  background: var(--egycare-light);
 }
 
 .doctor-info {
   padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-info h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--egycare-text);
 }
 
 .doctor-rating {
-  color: #ffc107;
+  color: #FBBF24;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
-/* Buttons */
+.doctor-experience {
+  color: var(--egycare-text-light);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.doctor-price {
+  color: var(--egycare-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: auto;
+}
+
+/* Buttons - Modern Design */
+.btn {
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  border: none;
+}
+
 .btn-primary {
   background-color: var(--egycare-primary);
-  border-color: var(--egycare-primary);
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s;
+  color: white;
+  box-shadow: 0 2px 8px rgba(11, 95, 165, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--egycare-dark);
-  border-color: var(--egycare-dark);
+  background-color: #094A85;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(11, 95, 165, 0.4);
 }
 
 .btn-outline-primary {
+  background-color: transparent;
   color: var(--egycare-primary);
-  border-color: var(--egycare-primary);
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
+  border: 2px solid var(--egycare-primary);
 }
 
 .btn-outline-primary:hover {
   background-color: var(--egycare-primary);
-  border-color: var(--egycare-primary);
+  color: white;
+  transform: translateY(-2px);
 }
 
-/* Footer */
-.footer {
+.btn-lg {
+  padding: 1rem 2.5rem;
+  font-size: 1.05rem;
+  border-radius: 12px;
+}
+
+.btn-sm {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  border-radius: 8px;
+}
+
+/* Progress Indicator for Booking Steps */
+.booking-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progress-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--egycare-border);
+  color: var(--egycare-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .progress-circle {
   background-color: var(--egycare-primary);
   color: white;
-  padding: 2rem 0;
-  margin-top: 4rem;
+}
+
+.progress-step.completed .progress-circle {
+  background-color: var(--egycare-success);
+  color: white;
+}
+
+.progress-label {
+  font-size: 0.875rem;
+  color: var(--egycare-text-light);
+  font-weight: 500;
+}
+
+.progress-step.active .progress-label {
+  color: var(--egycare-primary);
+}
+
+/* Stats Cards */
+.stats-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid var(--egycare-border);
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.stats-card-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+}
+
+.stats-card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--egycare-text);
+  margin-bottom: 0.5rem;
+}
+
+.stats-card p {
+  color: var(--egycare-text-light);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Features Section */
+.feature-card {
+  text-align: center;
+  padding: 2rem;
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--egycare-primary) 0%, var(--egycare-secondary) 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.feature-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--egycare-text);
+}
+
+.feature-card p {
+  color: var(--egycare-text-light);
+  margin: 0;
+}
+
+/* Footer - Professional Design */
+.footer {
+  background: linear-gradient(135deg, #0B5FA5 0%, #094A85 100%);
+  color: white;
+  padding: 3rem 0 1.5rem;
+  margin-top: 5rem;
 }
 
 .footer h5 {
-  margin-bottom: 1rem;
-  font-weight: bold;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
 }
 
 .footer a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: all 0.3s;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
 }
 
 .footer a:hover {
   color: white;
+  transform: translateX(-3px);
 }
 
-/* Admin Dashboard */
-.admin-sidebar {
-  background-color: var(--egycare-primary);
-  min-height: 100vh;
-  padding: 2rem 1rem;
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
 }
 
-.admin-sidebar .nav-link {
-  color: white;
-  padding: 1rem;
-  border-radius: 8px;
+/* Dashboard Styles */
+.dashboard-header {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--egycare-border);
+}
+
+.dashboard-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--egycare-text);
   margin-bottom: 0.5rem;
 }
 
-.admin-sidebar .nav-link:hover,
-.admin-sidebar .nav-link.active {
-  background-color: var(--egycare-secondary);
+.dashboard-header p {
+  color: var(--egycare-text-light);
+  margin: 0;
 }
 
-.admin-content {
-  padding: 2rem;
+/* Tab Navigation */
+.nav-tabs {
+  border: none;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-/* Appointment Table */
-.appointment-table {
+.nav-tabs .nav-link {
+  border: none;
   background: white;
+  border-radius: 10px;
+  padding: 0.875rem 1.5rem;
+  color: var(--egycare-text);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.nav-tabs .nav-link:hover {
+  background: var(--egycare-light);
+  color: var(--egycare-primary);
+}
+
+.nav-tabs .nav-link.active {
+  background: white;
+  color: var(--egycare-primary);
+  border-color: var(--egycare-primary);
+}
+
+/* Medical History Card */
+.history-card {
+  background: white;
+  border: 1px solid var(--egycare-border);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
 }
 
-.appointment-table th {
-  background-color: var(--egycare-primary);
-  color: white;
-  padding: 1rem;
+.history-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--egycare-primary);
 }
 
-.appointment-table td {
-  padding: 1rem;
-  vertical-align: middle;
+/* Badges */
+.badge {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
 }
 
-.badge-pending {
-  background-color: #ffc107;
+.badge-diagnosis {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #DC2626;
 }
 
-.badge-confirmed {
-  background-color: #28a745;
+.badge-test {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #2563EB;
 }
 
-.badge-cancelled {
-  background-color: #dc3545;
+.badge-prescription {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
+  .hero-section {
+    padding: 4rem 0;
+    min-height: 400px;
+  }
+
   .hero-section h1 {
     font-size: 2rem;
   }
-  
+
   .hero-section p {
     font-size: 1rem;
   }
+
+  .quick-search-card {
+    padding: 1.5rem;
+  }
+
+  .specialty-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .specialty-card-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+
+  .stats-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Utility Classes */
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--egycare-text);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--egycare-text-light);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.card-clean {
+  background: white;
+  border: 1px solid var(--egycare-border);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.text-primary-egycare {
+  color: var(--egycare-primary);
+}
+
+.bg-light-egycare {
+  background-color: var(--egycare-light);
 }

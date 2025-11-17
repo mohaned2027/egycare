@@ -1,4 +1,4 @@
-// Header Component - شريط التنقل العلوي
+// Header Component - New Professional Design
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { isAuthenticated, getCurrentUser, logout } from '../services/authService';
@@ -7,100 +7,156 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const isLoggedIn = isAuthenticated();
   const currentUser = getCurrentUser();
-  
+
   const handleLogout = () => {
     logout();
     navigate('/');
   };
-  
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
-        {/* Logo والاسم */}
-        <Link className="navbar-brand" to="/">
-          <i className="bi bi-hospital me-2"></i>
-          EgyCare
+        {/* Logo & Brand */}
+        <Link className="navbar-brand d-flex align-items-center" to="/">
+          <div
+            style={{
+              width: '40px',
+              height: '40px',
+              background: 'linear-gradient(135deg, #0B5FA5 0%, #0E74C7 100%)',
+              borderRadius: '10px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginLeft: '10px'
+            }}
+          >
+            <i className="bi bi-heart-pulse-fill" style={{ color: 'white', fontSize: '1.25rem' }}></i>
+          </div>
+          <div>
+            <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#0B5FA5' }}>
+              EgyCare
+            </div>
+            <div style={{ fontSize: '0.7rem', color: '#6B7280', marginTop: '-5px' }}>
+              Healthcare Platform
+            </div>
+          </div>
         </Link>
-        
-        {/* زرار القائمة للموبايل */}
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          style={{ color: '#0B5FA5' }}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        
-        {/* روابط القائمة */}
+
+        {/* Navigation Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} to="/">الرئيسية</Link>
+              <Link
+                className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+                to="/"
+              >
+                Home
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/specialties' ? 'active' : ''}`} to="/specialties">التخصصات</Link>
+              <Link
+                className={`nav-link ${location.pathname.includes('/specialties') ? 'active' : ''}`}
+                to="/specialties"
+              >
+                Medical Specialties
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} to="/about">عن EgyCare</Link>
+              <Link
+                className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}
+                to="/dashboard"
+              >
+                Patient Dashboard
+              </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`} to="/contact">تواصل معنا</Link>
+              <Link
+                className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
+                to="/contact"
+              >
+                Contact
+              </Link>
             </li>
           </ul>
-          
-          {/* Login/Logout buttons */}
-          <div className="d-flex align-items-center ms-3">
+
+          {/* User Actions */}
+          <div className="d-flex align-items-center gap-2">
             {isLoggedIn ? (
-              <div className="dropdown">
-                <button 
-                  className="btn btn-link text-white text-decoration-none dropdown-toggle d-flex align-items-center p-0"
-                  type="button"
-                  id="userDropdown"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <img 
-                    src={currentUser?.profileImage || '/placeholder.svg'} 
-                    alt={currentUser?.name}
-                    className="rounded-circle me-2"
-                    style={{ width: '40px', height: '40px', objectFit: 'cover' }}
-                  />
-                  <span className="text-white">{currentUser?.name}</span>
-                </button>
-                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                  <li>
-                    <Link className="dropdown-item" to="/dashboard">
-                      <i className="bi bi-speedometer2 me-2"></i>
-                      لوحة التحكم
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/profile">
-                      <i className="bi bi-person-circle me-2"></i>
-                      الملف الشخصي
-                    </Link>
-                  </li>
-                  <li><hr className="dropdown-divider" /></li>
-                  <li>
-                    <button 
-                      className="dropdown-item text-danger"
-                      onClick={handleLogout}
-                    >
-                      <i className="bi bi-box-arrow-right me-2"></i>
-                      تسجيل الخروج
-                    </button>
-                  </li>
-                </ul>
-              </div>
+              <>
+                <Link to="/specialties" className="btn btn-primary btn-sm d-none d-lg-inline-flex">
+                  Book Now
+                </Link>
+                <div className="dropdown">
+                  <button
+                    className="btn btn-link text-decoration-none dropdown-toggle d-flex align-items-center p-0"
+                    type="button"
+                    id="userDropdown"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style={{ color: '#1F2937' }}
+                  >
+                    <img
+                      src={currentUser?.profileImage || '/placeholder.svg'}
+                      alt={currentUser?.name}
+                      className="rounded-circle me-2"
+                      style={{
+                        width: '35px',
+                        height: '35px',
+                        objectFit: 'cover',
+                        border: '2px solid #0B5FA5'
+                      }}
+                    />
+                    <span className="d-none d-md-inline">{currentUser?.name}</span>
+                  </button>
+                  <ul className="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="userDropdown">
+                    <li>
+                      <Link className="dropdown-item" to="/dashboard">
+                        <i className="bi bi-speedometer2 me-2 text-primary"></i>
+                        لوحة التحكم
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/profile">
+                        <i className="bi bi-person-circle me-2 text-primary"></i>
+                        الملف الشخصي
+                      </Link>
+                    </li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li>
+                      <button
+                        className="dropdown-item text-danger"
+                        onClick={handleLogout}
+                      >
+                        <i className="bi bi-box-arrow-right me-2"></i>
+                        تسجيل الخروج
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </>
             ) : (
-              <Link to="/login" className="btn btn-outline-light btn-sm">
-                <i className="bi bi-box-arrow-in-right me-1"></i>
-                تسجيل الدخول
-              </Link>
+              <>
+                <Link to="/specialties" className="btn btn-primary btn-sm d-none d-lg-inline-flex">
+                  Book Now
+                </Link>
+                <Link to="/login" className="btn btn-outline-primary btn-sm">
+                  Login
+                </Link>
+              </>
             )}
           </div>
         </div>
