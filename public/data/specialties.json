@@ -1,50 +1,66 @@
-[
-  {
-    "id": 1,
-    "name": "Cardiology",
-    "nameAr": "القلب والأوعية الدموية",
-    "icon": "heart",
-    "description": "Heart and blood vessel care",
-    "descriptionAr": "رعاية القلب والأوعية الدموية"
-  },
-  {
-    "id": 2,
-    "name": "Dermatology",
-    "nameAr": "الجلدية",
-    "icon": "droplet",
-    "description": "Skin, hair, and nails care",
-    "descriptionAr": "رعاية الجلد والشعر والأظافر"
-  },
-  {
-    "id": 3,
-    "name": "Pediatrics",
-    "nameAr": "طب الأطفال",
-    "icon": "baby",
-    "description": "Children's healthcare",
-    "descriptionAr": "رعاية صحة الأطفال"
-  },
-  {
-    "id": 4,
-    "name": "Orthopedics",
-    "nameAr": "العظام",
-    "icon": "bone",
-    "description": "Bone and joint care",
-    "descriptionAr": "رعاية العظام والمفاصل"
-  },
-  {
-    "id": 5,
-    "name": "Neurology",
-    "nameAr": "الأعصاب",
-    "icon": "brain",
-    "description": "Brain and nervous system",
-    "descriptionAr": "رعاية المخ والجهاز العصبي"
-  },
-  {
-    "id": 6,
-    "name": "Ophthalmology",
-    "nameAr": "العيون",
-    "icon": "eye",
-    "description": "Eye care and vision",
-    "descriptionAr": "رعاية العيون والبصر"
-  }
+
+  [
+  { "id": 1, "name": "Cardiology", "nameAr": "القلب والأوعية الدموية", "icon": "heart", "description": "Heart and blood vessel care", "descriptionAr": "رعاية القلب والأوعية الدموية" },
+  { "id": 2, "name": "Dermatology", "nameAr": "الجلدية", "icon": "droplet", "description": "Skin, hair, and nails care", "descriptionAr": "رعاية الجلد والشعر والأظافر" },
+  { "id": 3, "name": "Pediatrics", "nameAr": "طب الأطفال", "icon": "baby", "description": "Children's healthcare", "descriptionAr": "رعاية صحة الأطفال" },
+  { "id": 4, "name": "Orthopedics", "nameAr": "العظام", "icon": "bone", "description": "Bone and joint care", "descriptionAr": "رعاية العظام والمفاصل" },
+  { "id": 5, "name": "Neurology", "nameAr": "الأعصاب", "icon": "brain", "description": "Brain and nervous system", "descriptionAr": "رعاية المخ والجهاز العصبي" },
+  { "id": 6, "name": "Ophthalmology", "nameAr": "العيون", "icon": "eye", "description": "Eye care and vision", "descriptionAr": "رعاية العيون والبصر" },
+
+  { "id": 7, "name": "ENT", "nameAr": "أنف وأذن وحنجرة", "icon": "ear", "description": "Ear, nose, and throat care", "descriptionAr": "رعاية الأذن والأنف والحنجرة" },
+  { "id": 8, "name": "Dentistry", "nameAr": "طب الأسنان", "icon": "tooth", "description": "Dental and oral health", "descriptionAr": "رعاية الأسنان والفم" },
+  { "id": 9, "name": "General Surgery", "nameAr": "الجراحة العامة", "icon": "scissors", "description": "General surgical procedures", "descriptionAr": "إجراءات الجراحة العامة" },
+  { "id": 10, "name": "Internal Medicine", "nameAr": "الباطنة", "icon": "stethoscope", "description": "Internal diseases treatment", "descriptionAr": "تشخيص وعلاج أمراض الباطنة" },
+
+  { "id": 11, "name": "Gastroenterology", "nameAr": "الجهاز الهضمي", "icon": "gut", "description": "Digestive system care", "descriptionAr": "رعاية الجهاز الهضمي" },
+  { "id": 12, "name": "Endocrinology", "nameAr": "الغدد الصماء", "icon": "flask-round", "description": "Hormone and metabolism care", "descriptionAr": "رعاية الهرمونات والتمثيل الغذائي" },
+  { "id": 13, "name": "Nephrology", "nameAr": "الكلى", "icon": "droplets", "description": "Kidney treatment", "descriptionAr": "رعاية وعلاج أمراض الكلى" },
+  { "id": 14, "name": "Urology", "nameAr": "المسالك البولية", "icon": "male", "description": "Urinary tract and male reproductive system", "descriptionAr": "علاج المسالك البولية والجهاز التناسلي الذكري" },
+  { "id": 15, "name": "Oncology", "nameAr": "الأورام", "icon": "ribbon", "description": "Cancer treatment", "descriptionAr": "تشخيص وعلاج الأورام" },
+
+  { "id": 16, "name": "Hematology", "nameAr": "أمراض الدم", "icon": "droplet", "description": "Blood disorders", "descriptionAr": "علاج أمراض الدم" },
+  { "id": 17, "name": "Rheumatology", "nameAr": "الروماتيزم", "icon": "joint", "description": "Joint and autoimmune diseases", "descriptionAr": "أمراض المفاصل والمناعة الذاتية" },
+  { "id": 18, "name": "Pulmonology", "nameAr": "الصدرية", "icon": "wind", "description": "Respiratory system care", "descriptionAr": "رعاية الجهاز التنفسي" },
+  { "id": 19, "name": "Psychiatry", "nameAr": "الطب النفسي", "icon": "headphones", "description": "Mental health treatment", "descriptionAr": "تشخيص وعلاج الاضطرابات النفسية" },
+  { "id": 20, "name": "Psychology", "nameAr": "علم النفس", "icon": "brain-circuit", "description": "Mental therapy and counseling", "descriptionAr": "العلاج النفسي والإرشاد" },
+
+  { "id": 21, "name": "Obstetrics", "nameAr": "التوليد", "icon": "baby", "description": "Pregnancy and childbirth", "descriptionAr": "رعاية الحمل والولادة" },
+  { "id": 22, "name": "Gynecology", "nameAr": "أمراض النساء", "icon": "female", "description": "Female reproductive health", "descriptionAr": "رعاية الجهاز التناسلي الأنثوي" },
+  { "id": 23, "name": "Plastic Surgery", "nameAr": "التجميل", "icon": "sparkles", "description": "Cosmetic and reconstructive surgery", "descriptionAr": "الجراحة التجميلية والترميمية" },
+  { "id": 24, "name": "Vascular Surgery", "nameAr": "جراحة الأوعية الدموية", "icon": "activity", "description": "Blood vessel surgery", "descriptionAr": "جراحة الأوعية الدموية" },
+  { "id": 25, "name": "Thoracic Surgery", "nameAr": "جراحة الصدر", "icon": "lungs", "description": "Chest and lung surgeries", "descriptionAr": "جراحات الصدر والرئة" },
+
+  { "id": 26, "name": "Neurosurgery", "nameAr": "جراحة المخ والأعصاب", "icon": "brain", "description": "Brain and spine surgery", "descriptionAr": "جراحة المخ والعمود الفقري" },
+  { "id": 27, "name": "Pediatric Surgery", "nameAr": "جراحة الأطفال", "icon": "baby", "description": "Surgery for children", "descriptionAr": "جراحات الأطفال" },
+  { "id": 28, "name": "Family Medicine", "nameAr": "طب الأسرة", "icon": "house", "description": "General family healthcare", "descriptionAr": "الرعاية الصحية للأسرة" },
+  { "id": 29, "name": "Emergency Medicine", "nameAr": "طب الطوارئ", "icon": "alarm", "description": "Urgent and emergency care", "descriptionAr": "الرعاية الطبية الطارئة" },
+  { "id": 30, "name": "Sports Medicine", "nameAr": "طب الرياضة", "icon": "dumbbell", "description": "Sports injuries and fitness", "descriptionAr": "إصابات الرياضة واللياقة" },
+
+  { "id": 31, "name": "Geriatrics", "nameAr": "طب المسنين", "icon": "person-standing", "description": "Elderly care", "descriptionAr": "رعاية كبار السن" },
+  { "id": 32, "name": "Pain Medicine", "nameAr": "علاج الألم", "icon": "syringe", "description": "Pain management", "descriptionAr": "علاج وإدارة الألم" },
+  { "id": 33, "name": "Allergy & Immunology", "nameAr": "الحساسية والمناعة", "icon": "sun", "description": "Allergy and immune disorders", "descriptionAr": "أمراض الحساسية والمناعة" },
+  { "id": 34, "name": "Infectious Diseases", "nameAr": "الأمراض المعدية", "icon": "bug", "description": "Infection diagnosis and treatment", "descriptionAr": "تشخيص وعلاج الأمراض المعدية" },
+  { "id": 35, "name": "Anesthesiology", "nameAr": "التخدير", "icon": "pill", "description": "Surgical anesthesia and pain relief", "descriptionAr": "التخدير وتسكين الألم" },
+
+  { "id": 36, "name": "Radiology", "nameAr": "الأشعة", "icon": "scan", "description": "Medical imaging", "descriptionAr": "التصوير الطبي" },
+  { "id": 37, "name": "Interventional Radiology", "nameAr": "الأشعة التداخلية", "icon": "merge", "description": "Minimally invasive image-guided treatment", "descriptionAr": "علاج تدخلي موجه بالتصوير" },
+  { "id": 38, "name": "Nuclear Medicine", "nameAr": "الطب النووي", "icon": "radioactive", "description": "Radioactive imaging and therapy", "descriptionAr": "التصوير والعلاج بالمواد المشعة" },
+  { "id": 39, "name": "Pathology", "nameAr": "الباثولوجيا", "icon": "beaker", "description": "Lab diagnosis of diseases", "descriptionAr": "تشخيص الأمراض مخبريًا" },
+  { "id": 40, "name": "Laboratory Medicine", "nameAr": "المعمل", "icon": "test-tube", "description": "Medical laboratory tests", "descriptionAr": "الفحوصات المخبرية" },
+
+  { "id": 41, "name": "Nutrition", "nameAr": "التغذية العلاجية", "icon": "apple", "description": "Diet and health planning", "descriptionAr": "التغذية الصحية والعلاجية" },
+  { "id": 42, "name": "Physical Therapy", "nameAr": "العلاج الطبيعي", "icon": "activity", "description": "Movement and rehabilitation", "descriptionAr": "إعادة التأهيل الحركي" },
+  { "id": 43, "name": "Occupational Therapy", "nameAr": "العلاج الوظيفي", "icon": "hand", "description": "Daily function rehabilitation", "descriptionAr": "تأهيل الوظائف اليومية" },
+  { "id": 44, "name": "Speech Therapy", "nameAr": "تخاطب", "icon": "mic", "description": "Speech and language therapy", "descriptionAr": "علاج النطق واللغة" },
+  { "id": 45, "name": "Audiology", "nameAr": "السمعيات", "icon": "waves", "description": "Hearing disorders", "descriptionAr": "علاج اضطرابات السمع" },
+
+  { "id": 46, "name": "Clinical Pharmacy", "nameAr": "الصيدلة الإكلينيكية", "icon": "pill", "description": "Medication therapy management", "descriptionAr": "إدارة العلاج الدوائي" },
+  { "id": 47, "name": "Forensic Medicine", "nameAr": "الطب الشرعي", "icon": "gavel", "description": "Medical legal investigations", "descriptionAr": "تحقيقات الطب الشرعي" },
+  { "id": 48, "name": "Reproductive Medicine", "nameAr": "الطب التناسلي", "icon": "venus-mars", "description": "Fertility and reproduction", "descriptionAr": "علاج مشاكل الإنجاب" },
+  { "id": 49, "name": "IVF & Fertility", "nameAr": "أطفال الأنابيب", "icon": "egg-fried", "description": "In-vitro fertilization care", "descriptionAr": "علاج الخصوبة وأطفال الأنابيب" },
+  { "id": 50, "name": "Genetic Medicine", "nameAr": "الوراثة", "icon": "dna", "description": "Genetic disorders and testing", "descriptionAr": "تشخيص الأمراض الوراثية" },
+
+  { "id": 51, "name": "Sleep Medicine", "nameAr": "طب النوم", "icon": "moon", "description": "Sleep disorders", "descriptionAr": "علاج اضطرابات النوم" }
+ 
+
 ]
