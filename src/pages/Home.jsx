@@ -75,7 +75,7 @@ const Home = () => {
               </p>
               <div className="d-flex gap-3 justify-content-lg-start justify-content-center">
                 <Link to="/specialties" className="btn btn-light btn-lg">
-                  Book Your Appointment Now
+                  Book  Now
                 </Link>
                 <Link to="/dashboard" className="btn btn-outline-primary btn-lg" style={{ backgroundColor: 'rgba(255,255,255,0.2)', borderColor: 'white', color: 'white' }}>
                   Dashboard
