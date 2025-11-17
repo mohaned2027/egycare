@@ -1,4 +1,4 @@
-// Profile Page - صفحة الملف الشخصي
+// Profile Page - Personal profile page
 import React, { useState, useEffect } from 'react';
 import { getCurrentUser } from '../services/authService';
 import { getPatientData } from '../services/patientService';
@@ -28,7 +28,7 @@ const Profile = () => {
         <Header />
         <div className="container py-5 text-center">
           <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">جاري التحميل...</span>
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div>
         <Footer />
@@ -42,7 +42,7 @@ const Profile = () => {
         <Header />
         <div className="container py-5">
           <div className="alert alert-danger">
-            لم يتم العثور على بيانات المريض
+            Patient data not found
           </div>
         </div>
         <Footer />
@@ -53,16 +53,16 @@ const Profile = () => {
   return (
     <div>
       <Header />
-      
+
       <section className="py-5 bg-light">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              {/* صورة البروفايل والاسم */}
+              {/* Profile Picture and Name */}
               <div className="card shadow-sm mb-4">
                 <div className="card-body text-center py-4">
-                  <img 
-                    src={patient.profileImage} 
+                  <img
+                    src={patient.profileImage}
                     alt={patient.name}
                     className="rounded-circle mb-3"
                     style={{ width: '120px', height: '120px', objectFit: 'cover' }}
@@ -79,46 +79,46 @@ const Profile = () => {
                 </div>
               </div>
 
-              {/* البيانات الشخصية */}
-              <div className="card shadow-sm">
-                <div className="card-header bg-primary text-white">
+              {/* Personal Information */}
+              <div className="card shadow-sm mb-4">
+                <div className="card-header">
                   <h5 className="mb-0">
                     <i className="bi bi-person-lines-fill me-2"></i>
-                    البيانات الشخصية
+                    Personal Information
                   </h5>
                 </div>
                 <div className="card-body">
                   <div className="row mb-3">
                     <div className="col-md-6">
-                      <label className="text-muted small">العمر</label>
-                      <p className="fw-bold">{patient.age} سنة</p>
+                      <label className="text-muted small">Age</label>
+                      <p className="fw-bold">{patient.age} years</p>
                     </div>
                     <div className="col-md-6">
-                      <label className="text-muted small">النوع</label>
+                      <label className="text-muted small">Gender</label>
                       <p className="fw-bold">
-                        {patient.gender === 'male' ? 'ذكر' : 'أنثى'}
+                        {patient.gender === 'male' ? 'Male' : 'Female'}
                       </p>
                     </div>
                   </div>
 
                   <div className="row mb-3">
                     <div className="col-md-6">
-                      <label className="text-muted small">فصيلة الدم</label>
+                      <label className="text-muted small">Blood Type</label>
                       <p className="fw-bold">{patient.bloodType}</p>
                     </div>
                     <div className="col-md-6">
-                      <label className="text-muted small">الرقم القومي</label>
+                      <label className="text-muted small">National ID</label>
                       <p className="fw-bold">{patient.nationalId}</p>
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <label className="text-muted small">العنوان</label>
+                    <label className="text-muted small">Address</label>
                     <p className="fw-bold">{patient.address}</p>
                   </div>
 
                   <div className="mb-0">
-                    <label className="text-muted small">المرض المزمن</label>
+                    <label className="text-muted small">Chronic Disease</label>
                     {patient.hasChronicDisease ? (
                       <div className="alert alert-warning d-flex align-items-center mb-0">
                         <i className="bi bi-exclamation-triangle-fill me-2"></i>
@@ -127,7 +127,7 @@ const Profile = () => {
                     ) : (
                       <div className="alert alert-success d-flex align-items-center mb-0">
                         <i className="bi bi-check-circle-fill me-2"></i>
-                        <span className="fw-bold">لا يوجد مرض مزمن</span>
+                        <span className="fw-bold">No chronic disease</span>
                       </div>
                     )}
                   </div>

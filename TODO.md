@@ -1,31 +1,53 @@
-# EgyCare Translation and Design Improvement Plan
+# EgyCare Translation and Enhancement TODO List
 
-## Completed Tasks
+## Translation Tasks (Arabic to English)
 
-- [x] Analyze codebase and create plan
-- [x] Create TODO.md file
+- [x] Home.jsx - Translation completed
+- [x] Specialties.jsx - Translation completed
+- [x] SpecialtyDoctors.jsx - Translation completed
+- [x] Dashboard.jsx - Translation completed
+- [x] Contact.jsx - Translation completed
+- [x] About.jsx - Translation completed
+- [x] Booking.jsx - Translation completed
+- [ ] AdminDashboard.jsx - Translate Arabic text to English
+- [x] Login.jsx - Translation completed
+- [x] Profile.jsx - Translation completed
+- [x] Header.jsx - Translation completed
+- [x] Footer.jsx - Translation completed
+- [x] AppointmentCard.jsx - Translation completed
+- [x] MedicalHistoryCard.jsx - Translation completed
+- [x] LabTestCard.jsx - Translation completed
+- [x] PrescriptionCard.jsx - Translation completed
 
-## Pending Tasks
+## Layout Direction Changes
 
-- [x] Change website direction from RTL to LTR in custom.css
-- [x] Translate HTML meta tags in index.html
-- [x] Translate comments in App.tsx
-- [ ] Translate Home.jsx page
-- [ ] Translate Specialties.jsx page
-- [ ] Translate SpecialtyDoctors.jsx page
-- [ ] Translate Dashboard.jsx page
-- [ ] Translate Contact.jsx page
-- [ ] Translate About.jsx page
-- [ ] Translate Booking.jsx page
-- [ ] Translate AdminDashboard.jsx page
-- [ ] Translate Login.jsx component
-- [ ] Translate Profile.jsx component
-- [ ] Translate Header.jsx component
-- [ ] Translate Footer.jsx component
-- [ ] Translate AppointmentCard.jsx component
-- [ ] Translate MedicalHistoryCard.jsx component
-- [ ] Translate LabTestCard.jsx component
-- [ ] Translate PrescriptionCard.jsx component
-- [ ] Design improvements and fixes
-- [ ] Test website functionality
-- [ ] Verify responsive design
+- [x] Change body direction from RTL to LTR in custom.css
+- [x] Update HTML meta tags to English
+- [x] Update App.tsx comments to English
+
+## Design Improvements
+
+- [ ] Enhance responsive design for mobile devices
+- [ ] Improve color scheme and visual hierarchy
+- [ ] Add smooth animations and transitions
+- [ ] Optimize typography and spacing
+
+## Functionality Testing
+
+- [ ] Test all navigation links
+- [ ] Verify form submissions work correctly
+- [ ] Check responsive behavior on different screen sizes
+- [ ] Test user authentication flow
+
+## Responsive Design Verification
+
+- [ ] Mobile (320px - 768px)
+- [ ] Tablet (768px - 1024px)
+- [ ] Desktop (1024px+)
+- [ ] Ensure all components are responsive
+
+## Home Page Design Fixes
+
+- [ ] Fix Medical Specialties section to use English names and descriptions
+- [ ] Implement Patient Reviews section with sample reviews
+- [ ] Verify Why EgyCare section consistency

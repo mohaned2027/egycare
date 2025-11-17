@@ -93,9 +93,9 @@ const Home = () => {
                     <select className="form-select" onChange={handleSpecialtyChange}>
                       <option value="">Choose Specialty</option>
                       {specialties.map((specialty) => (
-                        <option key={specialty.id} value={specialty.id}>
-                          {specialty.nameAr}
-                        </option>
+                      <option key={specialty.id} value={specialty.id}>
+                        {specialty.name}
+                      </option>
                       ))}
                     </select>
                   </div>
@@ -210,8 +210,8 @@ const Home = () => {
                       <div className={`specialty-card-icon ${iconInfo.color}`}>
                         <i className={`bi ${iconInfo.icon}`}></i>
                       </div>
-                      <h5>{specialty.nameAr}</h5>
-                      <p className="small mb-0">{specialty.descriptionAr}</p>
+                      <h5>{specialty.name}</h5>
+                      <p className="small mb-0">{specialty.description}</p>
                       <span className="badge bg-light text-dark mt-2">
                         {doctorCount} doctor
                       </span>
@@ -235,7 +235,77 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">Our Patients' Reviews</h2>
           <p className="section-subtitle">What our patients say about their experience with us</p>
-          {/* ... Reviews as in the previous version ... */}
+          <div className="row g-4">
+            <div className="col-md-4">
+              <div className="review-card">
+                <div className="review-header">
+                  <div className="review-avatar">
+                    <i className="bi bi-person-circle"></i>
+                  </div>
+                  <div>
+                    <h5 className="mb-0">Ahmed Mohamed</h5>
+                    <div className="review-stars">
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                    </div>
+                  </div>
+                </div>
+                <p className="review-text">
+                  "EgyCare made booking my appointment so easy. The doctor was excellent and the platform is very user-friendly. Highly recommended!"
+                </p>
+                <small className="text-muted">2 weeks ago</small>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="review-card">
+                <div className="review-header">
+                  <div className="review-avatar">
+                    <i className="bi bi-person-circle"></i>
+                  </div>
+                  <div>
+                    <h5 className="mb-0">Fatima Hassan</h5>
+                    <div className="review-stars">
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-half"></i>
+                    </div>
+                  </div>
+                </div>
+                <p className="review-text">
+                  "Great service! I was able to find a specialist quickly and the booking process was smooth. The medical history feature is very helpful."
+                </p>
+                <small className="text-muted">1 month ago</small>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="review-card">
+                <div className="review-header">
+                  <div className="review-avatar">
+                    <i className="bi bi-person-circle"></i>
+                  </div>
+                  <div>
+                    <h5 className="mb-0">Omar Ali</h5>
+                    <div className="review-stars">
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star-fill"></i>
+                      <i className="bi bi-star"></i>
+                    </div>
+                  </div>
+                </div>
+                <p className="review-text">
+                  "Excellent platform for healthcare management. The doctors are certified and the service is available 24/7. Very satisfied with my experience."
+                </p>
+                <small className="text-muted">3 weeks ago</small>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Ahmed Mohamed",
+    "rating": 5,
+    "text": "EgyCare made booking my appointment so easy. The doctor was excellent!",
+    "time": "2 weeks ago"
+  },
+  {
+    "id": 2,
+    "name": "Fatima Hassan",
+    "rating": 4.5,
+    "text": "Great service! Found a specialist quickly. Very helpful system.",
+    "time": "1 month ago"
+  },
+  {
+    "id": 3,
+    "name": "Omar Ali",
+    "rating": 4,
+    "text": "Excellent platform. Doctors are certified and available anytime.",
+    "time": "3 weeks ago"
+  },
+  {
+    "id": 4,
+    "name": "Mona Samir",
+    "rating": 5,
+    "text": "Very smooth experience. Highly recommended!",
+    "time": "1 week ago"
+  },
+  {
+    "id": 5,
+    "name": "Khaled Ibrahim",
+    "rating": 4,
+    "text": "Great user interface and fast booking.",
+    "time": "5 days ago"
+  },
+  {
+    "id": 6,
+    "name": "Sara Adel",
+    "rating": 5,
+    "text": "Amazing doctors and fast support!",
+    "time": "2 days ago"
+  }
+]

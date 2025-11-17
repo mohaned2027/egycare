@@ -1,18 +1,18 @@
-// Appointment Card Component - مكون بطاقة الموعد
+// Appointment Card Component - Appointment card component
 import React from 'react';
 
 const AppointmentCard = ({ appointment }) => {
-  // تحديد اللون والنص حسب الحالة
+  // Determine color and text based on status
   const getStatusBadge = (status) => {
     switch(status) {
       case 'confirmed':
-        return <span className="badge bg-success">مؤكد</span>;
+        return <span className="badge bg-success">Confirmed</span>;
       case 'pending':
-        return <span className="badge bg-warning text-dark">قيد الانتظار</span>;
+        return <span className="badge bg-warning text-dark">Pending</span>;
       case 'cancelled':
-        return <span className="badge bg-danger">ملغي</span>;
+        return <span className="badge bg-danger">Cancelled</span>;
       default:
-        return <span className="badge bg-secondary">غير محدد</span>;
+        return <span className="badge bg-secondary">Unknown</span>;
     }
   };
 
@@ -20,17 +20,17 @@ const AppointmentCard = ({ appointment }) => {
     <div className="card mb-3 shadow-sm">
       <div className="card-body">
         <div className="row align-items-center">
-          {/* صورة الطبيب */}
+          {/* Doctor Image */}
           <div className="col-md-2 text-center mb-3 mb-md-0">
-            <img 
-              src={appointment.doctorImage} 
+            <img
+              src={appointment.doctorImage}
               alt={appointment.doctorName}
               className="rounded-circle"
               style={{ width: '80px', height: '80px', objectFit: 'cover' }}
             />
           </div>
 
-          {/* معلومات الموعد */}
+          {/* Appointment Information */}
           <div className="col-md-7">
             <h5 className="mb-1">{appointment.doctorName}</h5>
             <p className="text-muted mb-1">
@@ -47,7 +47,7 @@ const AppointmentCard = ({ appointment }) => {
             </p>
           </div>
 
-          {/* حالة الموعد */}
+          {/* Appointment Status */}
           <div className="col-md-3 text-md-end">
             {getStatusBadge(appointment.status)}
           </div>

@@ -20,7 +20,7 @@ const Specialties = () => {
       setLoading(false);
     })
     .catch(error => {
-      console.error('خطأ في جلب البيانات:', error);
+      console.error('Error loading data:', error);
       setLoading(false);
     });
   }, []);
@@ -51,7 +51,7 @@ const Specialties = () => {
 
       <section className="hero-section" style={{ padding: '3rem 0', minHeight: 'auto' }}>
         <div className="container">
-          <h1 className="mb-3">Choose Medical Specialty</h1>
+          <h1>Choose Medical Specialty</h1>
           <p className="mb-4">Book a New Appointment</p>
 
           <div className="booking-progress">
@@ -64,7 +64,7 @@ const Specialties = () => {
             <div style={{ width: '60px', height: '2px', background: '#E5E7EB' }}></div>
             <div className="progress-step">
               <div className="progress-circle">2</div>
-              <span className="progress-label d-none d-md-inline">Select a Doctor</span>
+              <span className="progress-label d-none d-md-inline">Choose Doctor</span>
             </div>
             <div style={{ width: '60px', height: '2px', background: '#E5E7EB' }}></div>
             <div className="progress-step">
@@ -87,7 +87,7 @@ const Specialties = () => {
           {loading ? (
             <div className="text-center">
               <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">جاري التحميل...</span>
+                <span className="visually-hidden">Loading...</span>
               </div>
             </div>
           ) : (
@@ -100,7 +100,7 @@ const Specialties = () => {
                   return (
                     <div key={specialty.id} className="col-md-4 col-lg-3 col-6">
                       <Link to={`/specialty/${specialty.id}`} className="specialty-card">
-                        
+
                         <div className={`specialty-card-icon ${iconInfo.color}`}>
                           <i className={`bi ${iconInfo.icon}`}></i>
                         </div>
@@ -120,8 +120,8 @@ const Specialties = () => {
 
               <div className="d-flex justify-content-between mt-5">
                 <Link to="/" className="btn btn-outline-primary">
-                  <i className="bi bi-arrow-right me-2"></i>
-                  Previous
+                  <i className="bi bi-arrow-left me-2"></i>
+                  Back to Home
                 </Link>
               </div>
             </>

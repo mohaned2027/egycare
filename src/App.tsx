@@ -23,58 +23,58 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* الصفحة الرئيسية */}
+        {/* Home Page */}
         <Route path="/" element={<Home />} />
-        
-        {/* صفحة جميع التخصصات */}
+
+        {/* All Specialties Page */}
         <Route path="/specialties" element={<Specialties />} />
-        
-        {/* صفحة أطباء تخصص معين */}
+
+        {/* Doctors of Specific Specialty Page */}
         <Route path="/specialty/:id" element={<SpecialtyDoctors />} />
-        
-        {/* صفحة حجز موعد مع دكتور - محمية (تحتاج تسجيل دخول) */}
-        <Route 
-          path="/booking/:doctorId" 
+
+        {/* Book Appointment with Doctor - Protected (Requires Login) */}
+        <Route
+          path="/booking/:doctorId"
           element={
             <ProtectedRoute>
               <Booking />
             </ProtectedRoute>
-          } 
+          }
         />
-        
-        {/* صفحة تسجيل الدخول */}
+
+        {/* Login Page */}
         <Route path="/login" element={<Login />} />
-        
-        {/* لوحة تحكم المريض - محمية */}
-        <Route 
-          path="/dashboard" 
+
+        {/* Patient Dashboard - Protected */}
+        <Route
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } 
+          }
         />
-        
-        {/* صفحة الملف الشخصي - محمية */}
-        <Route 
-          path="/profile" 
+
+        {/* Profile Page - Protected */}
+        <Route
+          path="/profile"
           element={
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
-          } 
+          }
         />
-        
-        {/* لوحة تحكم الأدمن */}
+
+        {/* Admin Dashboard */}
         <Route path="/admin" element={<AdminDashboard />} />
-        
-        {/* صفحة عن EgyCare */}
+
+        {/* About EgyCare Page */}
         <Route path="/about" element={<About />} />
-        
-        {/* صفحة التواصل */}
+
+        {/* Contact Page */}
         <Route path="/contact" element={<Contact />} />
-        
-        {/* صفحة 404 - لو الصفحة مش موجودة */}
+
+        {/* 404 Page - If page not found */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

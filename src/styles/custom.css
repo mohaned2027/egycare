@@ -120,394 +120,6 @@ body {
 
 .quick-search-card h3 {
   color: var(--egycare-text);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-/* Specialty Cards - New Grid Design */
-.specialty-card {
-  background: white;
-  border: 1px solid var(--egycare-border);
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--egycare-text);
-}
-
-.specialty-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(11, 95, 165, 0.15);
-  border-color: var(--egycare-primary);
-  text-decoration: none;
-}
-
-.specialty-card-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 2.25rem;
-  transition: transform 0.3s ease;
-}
-
-.specialty-card:hover .specialty-card-icon {
-  transform: scale(1.1);
-}
-
-.specialty-card h5 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--egycare-text);
-}
-
-.specialty-card p {
-  font-size: 0.875rem;
-  color: var(--egycare-text-light);
-  margin: 0;
-}
-
-.specialty-card .badge {
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.35rem 0.75rem;
-}
-
-/* Icon Colors for Different Specialties */
-.icon-blue {
-  background-color: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
-}
-.icon-red {
-  background-color: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-}
-.icon-purple {
-  background-color: rgba(147, 51, 234, 0.1);
-  color: #9333ea;
-}
-.icon-green {
-  background-color: rgba(16, 185, 129, 0.1);
-  color: #10b981;
-}
-.icon-yellow {
-  background-color: rgba(245, 158, 11, 0.1);
-  color: #f59e0b;
-}
-.icon-indigo {
-  background-color: rgba(99, 102, 241, 0.1);
-  color: #6366f1;
-}
-.icon-pink {
-  background-color: rgba(236, 72, 153, 0.1);
-  color: #ec4899;
-}
-.icon-teal {
-  background-color: rgba(20, 184, 166, 0.1);
-  color: #14b8a6;
-}
-.icon-orange {
-  background-color: rgba(249, 115, 22, 0.1);
-  color: #f97316;
-}
-.icon-cyan {
-  background-color: rgba(6, 182, 212, 0.1);
-  color: #06b6d4;
-}
-
-/* Doctor Cards - Professional Design */
-.doctor-card {
-  background: white;
-  border: 1px solid var(--egycare-border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.doctor-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(11, 95, 165, 0.15);
-  border-color: var(--egycare-primary);
-}
-
-.doctor-image {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  background: var(--egycare-light);
-}
-
-.doctor-info {
-  padding: 1.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.doctor-info h5 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--egycare-text);
-}
-
-.doctor-rating {
-  color: #fbbf24;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.doctor-experience {
-  color: var(--egycare-text-light);
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.doctor-price {
-  color: var(--egycare-primary);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: auto;
-}
-
-/* Buttons - Modern Design */
-.btn {
-  font-weight: 600;
-  padding: 0.75rem 1.75rem;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-  border: none;
-}
-
-.btn-primary {
-  background-color: var(--egycare-primary);
-  color: white;
-  box-shadow: 0 2px 8px rgba(11, 95, 165, 0.3);
-}
-
-.btn-primary:hover {
-  background-color: #094a85;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(11, 95, 165, 0.4);
-}
-
-.btn-outline-primary {
-  background-color: transparent;
-  color: var(--egycare-primary);
-  border: 2px solid var(--egycare-primary);
-}
-
-.btn-outline-primary:hover {
-  background-color: var(--egycare-primary);
-  color: white;
-  transform: translateY(-2px);
-}
-
-.btn-lg {
-  padding: 1rem 2.5rem;
-  font-size: 1.05rem;
-  border-radius: 12px;
-}
-
-.btn-sm {
-  padding: 0.5rem 1.25rem;
-  font-size: 0.875rem;
-  border-radius: 8px;
-}
-
-/* Progress Indicator for Booking Steps */
-.booking-progress {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0;
-  gap: 1rem;
-}
-
-.progress-step {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.progress-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: var(--egycare-border);
-  color: var(--egycare-text-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 0.875rem;
-  transition: all 0.3s ease;
-}
-
-.progress-step.active .progress-circle {
-  background-color: var(--egycare-primary);
-  color: white;
-}
-
-.progress-step.completed .progress-circle {
-  background-color: var(--egycare-success);
-  color: white;
-}
-
-.progress-label {
-  font-size: 0.875rem;
-  color: var(--egycare-text-light);
-  font-weight: 500;
-}
-
-.progress-step.active .progress-label {
-  color: var(--egycare-primary);
-}
-
-/* Stats Cards */
-.stats-card {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  text-align: center;
-  border: 1px solid var(--egycare-border);
-  transition: all 0.3s ease;
-}
-
-.stats-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.stats-card-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 1rem;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.75rem;
-}
-
-.stats-card h3 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--egycare-text);
-  margin-bottom: 0.5rem;
-}
-
-.stats-card p {
-  color: var(--egycare-text-light);
-  font-size: 0.95rem;
-  margin: 0;
-}
-
-/* Features Section */
-.feature-card {
-  text-align: center;
-  padding: 2rem;
-}
-
-.feature-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1.5rem;
-  background: linear-gradient(
-    135deg,
-    var(--egycare-primary) 0%,
-    var(--egycare-secondary) 100%
-  );
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 2rem;
-}
-
-.feature-card h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--egycare-text);
-}
-
-.feature-card p {
-  color: var(--egycare-text-light);
-  margin: 0;
-}
-
-/* Footer - Professional Design */
-.footer {
-  background: linear-gradient(135deg, #0b5fa5 0%, #094a85 100%);
-  color: white;
-  padding: 3rem 0 1.5rem;
-  margin-top: 5rem;
-}
-
-.footer h5 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-}
-
-.footer a {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  transition: all 0.3s;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-.footer a:hover {
-  color: white;
-  transform: translateX(-3px);
-}
-
-.footer-bottom {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
-}
-
-/* Dashboard Styles */
-.dashboard-header {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border: 1px solid var(--egycare-border);
-}
-
-.dashboard-header h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--egycare-text);
   margin-bottom: 0.5rem;
 }
 
@@ -583,6 +195,183 @@ body {
   color: #059669;
 }
 
+/* Footer Styles */
+.footer {
+  background: linear-gradient(135deg, #0b5fa5 0%, #0e74c7 100%);
+  color: white;
+  padding: 3rem 0 1rem;
+  margin-top: auto;
+}
+
+.footer h5 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: white;
+}
+
+/* Specialty Card */
+.specialty-card {
+  background: white;
+  border: 1px solid var(--egycare-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--egycare-text);
+  display: block;
+}
+
+.specialty-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--egycare-primary);
+  transform: translateY(-2px);
+}
+
+.specialty-card-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.icon-red {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+.icon-blue {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+.icon-purple {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+.icon-green {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+.icon-yellow {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+.icon-orange {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+}
+.icon-pink {
+  background: linear-gradient(135deg, #ec4899, #db2777);
+}
+.icon-teal {
+  background: linear-gradient(135deg, #14b8a6, #0f766e);
+}
+.icon-indigo {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+.icon-cyan {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+/* Doctor Card */
+.doctor-card {
+  background: white;
+  border: 1px solid var(--egycare-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: var(--egycare-text);
+}
+
+.doctor-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.doctor-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.doctor-info {
+  padding: 1.5rem;
+}
+
+.doctor-rating {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* Progress Steps */
+.booking-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progress-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active .progress-circle {
+  background: white;
+  color: var(--egycare-primary);
+  border: 2px solid var(--egycare-primary);
+}
+
+.progress-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Admin Dashboard */
+.admin-sidebar {
+  background: linear-gradient(135deg, #0b5fa5 0%, #0e74c7 100%);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.admin-sidebar .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-section {
@@ -646,4 +435,199 @@ body {
 
 .bg-light-egycare {
   background-color: var(--egycare-light);
+}
+
+/* Badge Styles for Admin */
+.badge-pending {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.badge-confirmed {
+  background-color: #10b981;
+  color: white;
+}
+
+.badge-cancelled {
+  background-color: #ef4444;
+  color: white;
+}
+/* Feature Cards - Why EgyCare Section */
+.feature-card {
+  background: white;
+  border: 1px solid var(--egycare-border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-card:hover {
+  box-shadow: 0 8px 30px rgba(11, 95, 165, 0.15);
+  transform: translateY(-5px);
+  border-color: var(--egycare-primary);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--egycare-primary),
+    var(--egycare-secondary)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.feature-icon i {
+  font-size: 2rem;
+  color: white;
+}
+
+.feature-card h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--egycare-text);
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--egycare-text-light);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Review Cards - Patient Reviews Section */
+.review-card {
+  background: white;
+  border: 1px solid var(--egycare-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card:hover {
+  box-shadow: 0 8px 30px rgba(11, 95, 165, 0.12);
+  border-color: var(--egycare-accent);
+  transform: translateY(-3px);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.review-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--egycare-primary),
+    var(--egycare-accent)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.review-avatar i {
+  font-size: 2rem;
+  color: white;
+}
+
+.review-header h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--egycare-text);
+  margin-bottom: 0.25rem;
+}
+
+.review-stars {
+  color: #f59e0b;
+  font-size: 0.9rem;
+}
+
+.review-stars i {
+  margin-right: 2px;
+}
+
+.review-text {
+  color: var(--egycare-text);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.review-card small {
+  color: var(--egycare-text-light);
+  font-size: 0.875rem;
+}
+
+/* Utility Classes */
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--egycare-text);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--egycare-text-light);
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.slide-left {
+  animation: slideLeft 0.3s ease-in-out;
+}
+
+.slide-right {
+  animation: slideRight 0.3s ease-in-out;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100px);
+    opacity: 0.5;
+  }
 }

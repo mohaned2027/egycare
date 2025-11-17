@@ -72,15 +72,15 @@ const Header = () => {
                 className={`nav-link ${location.pathname.includes('/specialties') ? 'active' : ''}`}
                 to="/specialties"
               >
-                Medical Specialties
+                Specialties
               </Link>
             </li>
             <li className="nav-item">
               <Link
-                className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}
-                to="/dashboard"
+                className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+                to="/about"
               >
-                Patient Dashboard
+                About
               </Link>
             </li>
             <li className="nav-item">
@@ -94,12 +94,10 @@ const Header = () => {
           </ul>
 
           {/* User Actions */}
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center">
             {isLoggedIn ? (
               <>
-                <Link to="/specialties" className="btn btn-primary btn-sm d-none d-lg-inline-flex">
-                  Book Now
-                </Link>
+                {/* User Dropdown */}
                 <div className="dropdown">
                   <button
                     className="btn btn-link text-decoration-none dropdown-toggle d-flex align-items-center p-0"
@@ -126,13 +124,13 @@ const Header = () => {
                     <li>
                       <Link className="dropdown-item" to="/dashboard">
                         <i className="bi bi-speedometer2 me-2 text-primary"></i>
-                        لوحة التحكم
+                        Dashboard
                       </Link>
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         <i className="bi bi-person-circle me-2 text-primary"></i>
-                        الملف الشخصي
+                        Profile
                       </Link>
                     </li>
                     <li><hr className="dropdown-divider" /></li>
@@ -142,7 +140,7 @@ const Header = () => {
                         onClick={handleLogout}
                       >
                         <i className="bi bi-box-arrow-right me-2"></i>
-                        تسجيل الخروج
+                        Logout
                       </button>
                     </li>
                   </ul>

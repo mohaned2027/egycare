@@ -1,17 +1,17 @@
-// Specialty Doctors Page - صفحة أطباء تخصص معين
+// Specialty Doctors Page - Doctors of a specific specialty
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const SpecialtyDoctors = () => {
-  const { id } = useParams(); // جلب id من URL
+  const { id } = useParams(); // Get id from URL
   const [specialty, setSpecialty] = useState(null);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // جلب معلومات التخصص
+    // Fetch specialty information
     fetch('/data/specialties.json')
       .then(response => response.json())
       .then(data => {
@@ -19,11 +19,11 @@ const SpecialtyDoctors = () => {
         setSpecialty(foundSpecialty);
       });
 
-    // جلب الأطباء الخاصين بهذا التخصص
+    // Fetch doctors for this specialty
     fetch('/data/doctors.json')
       .then(response => response.json())
       .then(data => {
-        // تصفية الأطباء حسب التخصص
+        // Filter doctors by specialty
         const specialtyDoctors = data.filter(
           doctor => doctor.specialtyId === parseInt(id)
         );
@@ -31,7 +31,7 @@ const SpecialtyDoctors = () => {
         setLoading(false);
       })
       .catch(error => {
-        console.error('خطأ في جلب الأطباء:', error);
+        console.error('Error fetching doctors:', error);
         setLoading(false);
       });
   }, [id]);
@@ -39,11 +39,11 @@ const SpecialtyDoctors = () => {
   return (
     <div>
       <Header />
-      
+
       {/* Page Header */}
       <section className="hero-section">
         <div className="container">
-          <h1>{specialty?.nameAr || 'التخصص'}</h1>
+          <h1>{specialty?.nameAr || 'Specialty'}</h1>
           <p>{specialty?.descriptionAr}</p>
         </div>
       </section>
@@ -51,27 +51,27 @@ const SpecialtyDoctors = () => {
       {/* Doctors Grid */}
       <section className="py-5">
         <div className="container">
-          <h2 className="mb-4">الأطباء المتاحين</h2>
-          
+          <h2 className="mb-4">Available Doctors</h2>
+
           {loading ? (
             <div className="text-center">
               <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">جاري التحميل...</span>
+                <span className="visually-hidden">Loading...</span>
               </div>
             </div>
           ) : doctors.length === 0 ? (
             <div className="alert alert-info">
               <i className="bi bi-info-circle me-2"></i>
-              لا توجد أطباء متاحين في هذا التخصص حالياً
+              No doctors are currently available in this specialty
             </div>
           ) : (
             <div className="row g-4">
               {doctors.map(doctor => (
                 <div key={doctor.id} className="col-md-6 col-lg-4">
                   <div className="card doctor-card">
-                    <img 
-                      src={doctor.image} 
-                      className="doctor-image" 
+                    <img
+                      src={doctor.image}
+                      className="doctor-image"
                       alt={doctor.nameAr}
                     />
                     <div className="doctor-info">
@@ -87,18 +87,18 @@ const SpecialtyDoctors = () => {
                         </span>
                         <span className="text-muted">
                           <i className="bi bi-briefcase me-1"></i>
-                          {doctor.experience} سنة خبرة
+                          {doctor.experience} years experience
                         </span>
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <span className="fw-bold text-primary fs-5">
-                          {doctor.price} جنيه
+                          {doctor.price} EGP
                         </span>
-                        <Link 
+                        <Link
                           to={`/booking/${doctor.id}`}
                           className="btn btn-primary btn-sm"
                         >
-                          احجز الآن
+                          Book Now
                         </Link>
                       </div>
                     </div>
