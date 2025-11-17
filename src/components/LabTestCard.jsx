@@ -16,7 +16,7 @@ const LabTestCard = ({ test }) => {
             <h5 className="mb-1">{test.testName}</h5>
             <p className="text-muted mb-1">
               <i className="bi bi-building me-1"></i>
-              المعمل: {test.labName}
+              المعمل12: {test.labName}
             </p>
             <p className="text-muted mb-0">
               <i className="bi bi-calendar3 me-1"></i>
