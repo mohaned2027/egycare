@@ -1,4 +1,3 @@
-// Home Page - الصفحة الرئيسية - New Design
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -6,20 +5,28 @@ import Footer from '../components/Footer';
 
 const Home = () => {
   const [specialties, setSpecialties] = useState([]);
+  const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/data/specialties.json')
-      .then(response => response.json())
-      .then(data => {
-        setSpecialties(data.slice(0, 6));
+    Promise.all([
+      fetch('/data/specialties.json').then(res => res.json()),
+      fetch('/data/doctors.json').then(res => res.json())
+    ])
+      .then(([specialtiesData, doctorsData]) => {
+        setSpecialties(specialtiesData.slice(0, 6)); // أول 6 تخصصات
+        setDoctors(doctorsData);
         setLoading(false);
       })
       .catch(error => {
-        console.error('خطأ في جلب التخصصات:', error);
+        console.error('خطأ في جلب البيانات:', error);
         setLoading(false);
       });
   }, []);
+
+  const getDoctorCount = (specialtyId) => {
+    return doctors.filter(doc => doc.specialtyId === specialtyId).length;
+  };
 
   const getSpecialtyIcon = (icon) => {
     const icons = {
@@ -32,6 +39,7 @@ const Home = () => {
     };
     return icons[icon] || { icon: 'bi-hospital', color: 'icon-blue' };
   };
+
 
   return (
     <div>
@@ -165,23 +173,26 @@ const Home = () => {
               </div>
             </div>
           ) : (
-            <div className="row g-4">
+<div className="row g-4">
               {specialties.map(specialty => {
                 const iconInfo = getSpecialtyIcon(specialty.icon);
+                const doctorCount = getDoctorCount(specialty.id);
+
                 return (
                   <div key={specialty.id} className="col-md-4 col-lg-2 col-6">
-                    <Link
-                      to={`/specialty/${specialty.id}`}
-                      className="specialty-card"
-                    >
+                    <Link to={`/specialty/${specialty.id}`} className="specialty-card">
+                      
                       <div className={`specialty-card-icon ${iconInfo.color}`}>
                         <i className={`bi ${iconInfo.icon}`}></i>
                       </div>
+                      
                       <h5>{specialty.nameAr}</h5>
                       <p className="small mb-0">{specialty.descriptionAr}</p>
+
                       <span className="badge bg-light text-dark mt-2">
-                        {specialty.doctorCount || '15'} طبيب
+                        {doctorCount} طبيب
                       </span>
+
                     </Link>
                   </div>
                 );
