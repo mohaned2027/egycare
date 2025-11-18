@@ -99,19 +99,20 @@ const Home = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6 text-lg-start text-center">
+              <span className='egp'>The leading healthcare platform in Egypt</span>
               <h1 className="mb-4">
                 Advanced and Safe <br/>
                 <span style={{ color: '#00D4FF' }}>Healthcare</span>
               </h1>
-              <p className="mb-4">
+              <p className="mb-4 hero-text">
                 Book medical appointments and manage your medical history quickly, safely, and efficiently with the best certified doctors in Egypt
               </p>
               <div className="d-flex gap-3 justify-content-lg-start justify-content-center">
-                <Link to="/specialties" className="btn btn-light btn-lg">
-                  Book  Now
+                <Link to="/specialties" className="btn btn-light btn-lg change-btn">
+                  Book Your Appointment Now
                 </Link>
-                <Link to="/dashboard" className="btn btn-outline-primary btn-lg" style={{ backgroundColor: 'rgba(255,255,255,0.2)', borderColor: 'white', color: 'white' }}>
-                  Dashboard
+                <Link to="/dashboard" className="btn btn-outline-primary btn-lg change-btn btn-k" style={{ backgroundColor: 'rgba(255,255,255,0.2)', borderColor: 'white', color: 'white' }}>
+                 Patient Dashboard
                 </Link>
               </div>
             </div>
