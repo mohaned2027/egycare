@@ -1,0 +1,19 @@
+{
+  "vision": {
+    "title": "Our Vision",
+    "description": "To be Egypt's and the region's leading medical platform"
+  },
+  "mission": {
+    "title": "Our Mission",
+    "description": "Facilitate access to quality healthcare for everyone"
+  },
+  "values": {
+    "title": "Our Values",
+    "description": "Quality, honesty, and professionalism in service delivery"
+  },
+  "story": {
+    "title": "Who We Are?",
+    "subtitle": "EgyCare is Egypt's first medical appointment booking platform. We connect patients with the best specialists in all medical fields.",
+    "description": "We strive to facilitate access to quality healthcare by providing an easy and secure platform that connects patients with specialized doctors."
+  }
+}

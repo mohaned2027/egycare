@@ -1,0 +1,41 @@
+{
+  "siteName": "EgyCare",
+  "siteSlogan": "Healthcare Platform",
+  "logo": {
+    "iconClass": "bi-heart-pulse-fill",
+    "primaryColor": "#0B5FA5",
+    "secondaryColor": "#0E74C7"
+  },
+  "contact": {
+    "phone": "19888",
+    "email": "info@egycare.com",
+    "address": "Cairo, Egypt"
+  },
+  "social": {
+    "facebook": "#",
+    "twitter": "#",
+    "instagram": "#"
+  },
+  "features": [
+    {
+      "icon": "bi-clock",
+      "title": "Available 24/7",
+      "description": "Service available around the clock for your convenience"
+    },
+    {
+      "icon": "bi-calendar-check",
+      "title": "Quick & Easy Booking",
+      "description": "Book your appointment in simple steps"
+    },
+    {
+      "icon": "bi-shield-check",
+      "title": "Secure Medical History",
+      "description": "Safe management of medical records and history"
+    },
+    {
+      "icon": "bi-patch-check",
+      "title": "Certified Doctors",
+      "description": "Network of the best qualified doctors"
+    }
+  ]
+}

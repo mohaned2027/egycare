@@ -1,5 +1,5 @@
 // Header Component - New Professional Design
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { isAuthenticated, getCurrentUser, logout } from '../services/authService';
 
@@ -7,9 +7,17 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [settings, setSettings] = useState(null);
 
   const isLoggedIn = isAuthenticated();
   const currentUser = getCurrentUser();
+
+  useEffect(() => {
+    fetch('/data/settings.json')
+      .then(res => res.json())
+      .then(data => setSettings(data))
+      .catch(err => console.error('Error loading settings:', err));
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -25,7 +33,7 @@ const Header = () => {
             style={{
               width: '40px',
               height: '40px',
-              background: 'linear-gradient(135deg, #0B5FA5 0%, #0E74C7 100%)',
+              background: `linear-gradient(135deg, ${settings?.logo?.primaryColor || '#0B5FA5'} 0%, ${settings?.logo?.secondaryColor || '#0E74C7'} 100%)`,
               borderRadius: '10px',
               display: 'flex',
               alignItems: 'center',
@@ -33,24 +41,26 @@ const Header = () => {
               marginLeft: '10px'
             }}
           >
-            <i className="bi bi-heart-pulse-fill" style={{ color: 'white', fontSize: '1.25rem' }}></i>
+            <i className={`bi ${settings?.logo?.iconClass || 'bi-heart-pulse-fill'}`} style={{ color: 'white', fontSize: '1.25rem' }}></i>
           </div>
           <div>
-            <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#0B5FA5' }}>
-              EgyCare
+            <div style={{ fontSize: '1.25rem', fontWeight: '700', color: settings?.logo?.primaryColor || '#0B5FA5' }}>
+              {settings?.siteName || 'EgyCare'}
             </div>
             <div style={{ fontSize: '0.7rem', color: '#6B7280', marginTop: '-5px' }}>
-              Healthcare Platform
+              {settings?.siteSlogan || 'Healthcare Platform'}
             </div>
           </div>
         </Link>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="navbar-toggler border-0"
+          className="navbar-toggler border-0 shadow-none"
           type="button"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          style={{ color: '#0B5FA5' }}
+          aria-controls="navbarNav"
+          aria-expanded={isMenuOpen}
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -147,7 +157,7 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Link to="/specialties" className="btn btn-primary btn-sm d-none d-lg-inline-flex">
+                <Link to="/specialties" className="btn btn-primary btn-sm d-none d-lg-inline-flex me-2">
                   Book Now
                 </Link>
                 <Link to="/login" className="btn btn-outline-primary btn-sm">

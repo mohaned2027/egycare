@@ -8,6 +8,8 @@ const Specialties = () => {
   const [specialties, setSpecialties] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   useEffect(() => {
     Promise.all([
@@ -43,6 +45,16 @@ const Specialties = () => {
     const colorIndex = id % colors.length;
 
     return iconMap[icon] || { icon: 'bi-hospital', color: colors[colorIndex] };
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentSpecialties = specialties.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(specialties.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -93,7 +105,7 @@ const Specialties = () => {
           ) : (
             <>
               <div className="row g-4">
-                {specialties.map(specialty => {
+                {currentSpecialties.map(specialty => {
                   const iconInfo = getSpecialtyIcon(specialty.icon, specialty.id);
                   const doctorCount = getDoctorCount(specialty.id);
 
@@ -118,7 +130,43 @@ const Specialties = () => {
                 })}
               </div>
 
-              <div className="d-flex justify-content-between mt-5">
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <nav aria-label="Specialties pagination" className="mt-5">
+                  <ul className="pagination justify-content-center">
+                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                      <button
+                        className="page-link"
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                      >
+                        <i className="bi bi-chevron-left"></i>
+                      </button>
+                    </li>
+                    {[...Array(totalPages)].map((_, index) => (
+                      <li key={index + 1} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(index + 1)}
+                        >
+                          {index + 1}
+                        </button>
+                      </li>
+                    ))}
+                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                      <button
+                        className="page-link"
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                      >
+                        <i className="bi bi-chevron-right"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </nav>
+              )}
+
+              <div className="d-flex justify-content-between mt-4">
                 <Link to="/" className="btn btn-outline-primary">
                   <i className="bi bi-arrow-left me-2"></i>
                   Back to Home

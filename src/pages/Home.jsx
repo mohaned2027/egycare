@@ -8,20 +8,30 @@ const Home = () => {
   const [specialties, setSpecialties] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [reviews, setReviews] = useState([]);
+  const [features, setFeatures] = useState([]);
+  const [aboutData, setAboutData] = useState(null);
 
   const [selectedSpecialty, setSelectedSpecialty] = useState("");
+  const [selectedDoctor, setSelectedDoctor] = useState("");
   const [filteredDoctors, setFilteredDoctors] = useState([]);
 
   useEffect(() => {
     Promise.all([
       fetch('/data/specialties.json').then(res => res.json()),
-      fetch('/data/doctors.json').then(res => res.json())
+      fetch('/data/doctors.json').then(res => res.json()),
+      fetch('/data/reviews.json').then(res => res.json()),
+      fetch('/data/settings.json').then(res => res.json()),
+      fetch('/data/about.json').then(res => res.json())
     ])
-      .then(([specialtiesData, doctorsData]) => {
-        setSpecialties(specialtiesData.slice(0, 6)); // First 6 specialties
+      .then(([specialtiesData, doctorsData, reviewsData, settingsData, aboutDataFetched]) => {
+        setSpecialties(specialtiesData.slice(0, 6));
         setDoctors(doctorsData);
+        setReviews(reviewsData);
+        setFeatures(settingsData.features || []);
+        setAboutData(aboutDataFetched);
         setLoading(false);
-        setFilteredDoctors(doctorsData); // Show all doctors initially
+        setFilteredDoctors(doctorsData);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -48,12 +58,23 @@ const Home = () => {
   const handleSpecialtyChange = (e) => {
     const value = e.target.value;
     setSelectedSpecialty(value);
+    setSelectedDoctor("");
 
     if (value === "") {
-      setFilteredDoctors(doctors); // لو لم يتم اختيار تخصص → كل الدكاترة
+      setFilteredDoctors(doctors);
     } else {
       const filtered = doctors.filter(doc => doc.specialtyId === Number(value));
       setFilteredDoctors(filtered);
+    }
+  };
+
+  const handleSearch = () => {
+    if (selectedDoctor) {
+      window.location.href = `/booking/${selectedDoctor}`;
+    } else if (selectedSpecialty) {
+      window.location.href = `/specialty/${selectedSpecialty}`;
+    } else {
+      window.location.href = '/specialties';
     }
   };
 
@@ -102,7 +123,11 @@ const Home = () => {
 
                   <div className="mb-3">
                     <label className="form-label">Choose Doctor</label>
-                    <select className="form-select">
+                    <select
+                      className="form-select"
+                      value={selectedDoctor}
+                      onChange={(e) => setSelectedDoctor(e.target.value)}
+                    >
                       <option value="">Choose Doctor</option>
                       {filteredDoctors.map((doctor) => (
                         <option key={doctor.id} value={doctor.id}>
@@ -127,10 +152,14 @@ const Home = () => {
                     <input type="date" className="form-control" />
                   </div>
 
-                  <Link to="/specialties" className="btn btn-primary w-100">
+                  <button
+                    type="button"
+                    onClick={handleSearch}
+                    className="btn btn-primary w-100"
+                  >
                     <i className="bi bi-search me-2"></i>
-                    Search for Doctor
-                  </Link>
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -146,42 +175,17 @@ const Home = () => {
             We provide you with a comprehensive medical experience using the latest technologies and highest quality standards
           </p>
           <div className="row g-4">
-            <div className="col-md-3 col-6">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <i className="bi bi-clock"></i>
+            {features.map((feature, index) => (
+              <div key={index} className="col-md-3 col-6">
+                <div className="feature-card">
+                  <div className="feature-icon">
+                    <i className={`bi ${feature.icon}`}></i>
+                  </div>
+                  <h4>{feature.title}</h4>
+                  <p>{feature.description}</p>
                 </div>
-                <h4>Available 24/7</h4>
-                <p>Service available around the clock for your convenience</p>
               </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <i className="bi bi-calendar-check"></i>
-                </div>
-                <h4>Quick & Easy Booking</h4>
-                <p>Book your appointment in simple steps</p>
-              </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <i className="bi bi-shield-check"></i>
-                </div>
-                <h4>Secure Medical History</h4>
-                <p>Safe management of medical records and history</p>
-              </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <i className="bi bi-patch-check"></i>
-                </div>
-                <h4>Certified Doctors</h4>
-                <p>Network of the best qualified doctors</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -236,75 +240,36 @@ const Home = () => {
           <h2 className="section-title">Our Patients' Reviews</h2>
           <p className="section-subtitle">What our patients say about their experience with us</p>
           <div className="row g-4">
-            <div className="col-md-4">
-              <div className="review-card">
-                <div className="review-header">
-                  <div className="review-avatar">
-                    <i className="bi bi-person-circle"></i>
-                  </div>
-                  <div>
-                    <h5 className="mb-0">Ahmed Mohamed</h5>
-                    <div className="review-stars">
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
+            {reviews.slice(0, 3).map((review) => {
+              const fullStars = Math.floor(review.rating);
+              const hasHalfStar = review.rating % 1 !== 0;
+
+              return (
+                <div key={review.id} className="col-md-4">
+                  <div className="review-card">
+                    <div className="review-header">
+                      <div className="review-avatar">
+                        <i className="bi bi-person-circle"></i>
+                      </div>
+                      <div>
+                        <h5 className="mb-0">{review.name}</h5>
+                        <div className="review-stars">
+                          {[...Array(fullStars)].map((_, i) => (
+                            <i key={i} className="bi bi-star-fill"></i>
+                          ))}
+                          {hasHalfStar && <i className="bi bi-star-half"></i>}
+                          {[...Array(5 - Math.ceil(review.rating))].map((_, i) => (
+                            <i key={i} className="bi bi-star"></i>
+                          ))}
+                        </div>
+                      </div>
                     </div>
+                    <p className="review-text">"{review.text}"</p>
+                    <small className="text-muted">{review.time}</small>
                   </div>
                 </div>
-                <p className="review-text">
-                  "EgyCare made booking my appointment so easy. The doctor was excellent and the platform is very user-friendly. Highly recommended!"
-                </p>
-                <small className="text-muted">2 weeks ago</small>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="review-card">
-                <div className="review-header">
-                  <div className="review-avatar">
-                    <i className="bi bi-person-circle"></i>
-                  </div>
-                  <div>
-                    <h5 className="mb-0">Fatima Hassan</h5>
-                    <div className="review-stars">
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-half"></i>
-                    </div>
-                  </div>
-                </div>
-                <p className="review-text">
-                  "Great service! I was able to find a specialist quickly and the booking process was smooth. The medical history feature is very helpful."
-                </p>
-                <small className="text-muted">1 month ago</small>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="review-card">
-                <div className="review-header">
-                  <div className="review-avatar">
-                    <i className="bi bi-person-circle"></i>
-                  </div>
-                  <div>
-                    <h5 className="mb-0">Omar Ali</h5>
-                    <div className="review-stars">
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star-fill"></i>
-                      <i className="bi bi-star"></i>
-                    </div>
-                  </div>
-                </div>
-                <p className="review-text">
-                  "Excellent platform for healthcare management. The doctors are certified and the service is available 24/7. Very satisfied with my experience."
-                </p>
-                <small className="text-muted">3 weeks ago</small>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>

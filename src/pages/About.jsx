@@ -1,9 +1,18 @@
 // About Page - About EgyCare
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const About = () => {
+  const [aboutData, setAboutData] = useState(null);
+
+  useEffect(() => {
+    fetch('/data/about.json')
+      .then(res => res.json())
+      .then(data => setAboutData(data))
+      .catch(err => console.error('Error loading about data:', err));
+  }, []);
+
   return (
     <div>
       <Header />
@@ -19,12 +28,12 @@ const About = () => {
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-lg-6">
-              <h2 className="mb-4">Who We Are?</h2>
+              <h2 className="mb-4">{aboutData?.story?.title || 'Who We Are?'}</h2>
               <p className="lead">
-                EgyCare is Egypt's first medical appointment booking platform. We connect patients with the best specialists in all medical fields.
+                {aboutData?.story?.subtitle || 'EgyCare is Egypt\'s first medical appointment booking platform.'}
               </p>
               <p>
-                We strive to facilitate access to quality healthcare by providing an easy and secure platform that connects patients with specialized doctors.
+                {aboutData?.story?.description || 'We strive to facilitate access to quality healthcare.'}
               </p>
             </div>
             <div className="col-lg-6">
@@ -41,9 +50,9 @@ const About = () => {
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body text-center">
                   <i className="bi bi-bullseye fs-1 text-primary mb-3"></i>
-                  <h4>Our Vision</h4>
+                  <h4>{aboutData?.vision?.title || 'Our Vision'}</h4>
                   <p className="text-muted">
-                    To be Egypt's and the region's leading medical platform
+                    {aboutData?.vision?.description || 'To be Egypt\'s leading medical platform'}
                   </p>
                 </div>
               </div>
@@ -52,9 +61,9 @@ const About = () => {
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body text-center">
                   <i className="bi bi-heart fs-1 text-primary mb-3"></i>
-                  <h4>Our Mission</h4>
+                  <h4>{aboutData?.mission?.title || 'Our Mission'}</h4>
                   <p className="text-muted">
-                    Facilitate access to quality healthcare for everyone
+                    {aboutData?.mission?.description || 'Facilitate access to quality healthcare'}
                   </p>
                 </div>
               </div>
@@ -63,9 +72,9 @@ const About = () => {
               <div className="card h-100 border-0 shadow-sm">
                 <div className="card-body text-center">
                   <i className="bi bi-award fs-1 text-primary mb-3"></i>
-                  <h4>Our Values</h4>
+                  <h4>{aboutData?.values?.title || 'Our Values'}</h4>
                   <p className="text-muted">
-                    Quality, honesty, and professionalism in service delivery
+                    {aboutData?.values?.description || 'Quality and professionalism'}
                   </p>
                 </div>
               </div>
