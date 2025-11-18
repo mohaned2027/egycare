@@ -1,5 +1,5 @@
 // Header Component - New Professional Design
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { isAuthenticated, getCurrentUser, logout } from '../services/authService';
 
@@ -7,9 +7,17 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [settings, setSettings] = useState(null);
 
   const isLoggedIn = isAuthenticated();
   const currentUser = getCurrentUser();
+
+  useEffect(() => {
+    fetch('/data/settings.json')
+      .then(res => res.json())
+      .then(data => setSettings(data))
+      .catch(err => console.error('Error loading settings:', err));
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -25,7 +33,7 @@ const Header = () => {
             style={{
               width: '40px',
               height: '40px',
-              background: 'linear-gradient(135deg, #0B5FA5 0%, #0E74C7 100%)',
+              background: `linear-gradient(135deg, ${settings?.logo?.primaryColor || '#0B5FA5'} 0%, ${settings?.logo?.secondaryColor || '#0E74C7'} 100%)`,
               borderRadius: '10px',
               display: 'flex',
               alignItems: 'center',
@@ -33,31 +41,32 @@ const Header = () => {
               marginLeft: '10px'
             }}
           >
-            <i className="bi bi-heart-pulse-fill" style={{ color: 'white', fontSize: '1.25rem' }}></i>
+            <i className={`bi ${settings?.logo?.iconClass || 'bi-heart-pulse-fill'}`} style={{ color: 'white', fontSize: '1.25rem' }}></i>
           </div>
           <div>
-            <div style={{ fontSize: '1.25rem', fontWeight: '700', color: '#0B5FA5' }}>
-              EgyCare
+            <div style={{ fontSize: '1.25rem', fontWeight: '700', color: settings?.logo?.primaryColor || '#0B5FA5' }}>
+              {settings?.siteName || 'EgyCare'}
             </div>
             <div style={{ fontSize: '0.7rem', color: '#6B7280', marginTop: '-5px' }}>
-              Healthcare Platform
+              {settings?.siteSlogan || 'Healthcare Platform'}
             </div>
           </div>
         </Link>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="navbar-toggler border-0"
+          className="navbar-toggler border-0 shadow-none"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          style={{ color: '#0B5FA5' }}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-controls="navbarNav"
+          aria-expanded={isMenuOpen}
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
         {/* Navigation Links */}
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
               <Link
@@ -72,15 +81,15 @@ const Header = () => {
                 className={`nav-link ${location.pathname.includes('/specialties') ? 'active' : ''}`}
                 to="/specialties"
               >
-                Medical Specialties
+                Specialties
               </Link>
             </li>
             <li className="nav-item">
               <Link
-                className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`}
-                to="/dashboard"
+                className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+                to="/about"
               >
-                Patient Dashboard
+                About
               </Link>
             </li>
             <li className="nav-item">
@@ -94,12 +103,10 @@ const Header = () => {
           </ul>
 
           {/* User Actions */}
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center">
             {isLoggedIn ? (
               <>
-                <Link to="/specialties" className="btn btn-primary btn-sm d-none d-lg-inline-flex">
-                  Book Now
-                </Link>
+                {/* User Dropdown */}
                 <div className="dropdown">
                   <button
                     className="btn btn-link text-decoration-none dropdown-toggle d-flex align-items-center p-0"
@@ -126,13 +133,13 @@ const Header = () => {
                     <li>
                       <Link className="dropdown-item" to="/dashboard">
                         <i className="bi bi-speedometer2 me-2 text-primary"></i>
-                        لوحة التحكم
+                        Dashboard
                       </Link>
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         <i className="bi bi-person-circle me-2 text-primary"></i>
-                        الملف الشخصي
+                        Profile
                       </Link>
                     </li>
                     <li><hr className="dropdown-divider" /></li>
@@ -142,7 +149,7 @@ const Header = () => {
                         onClick={handleLogout}
                       >
                         <i className="bi bi-box-arrow-right me-2"></i>
-                        تسجيل الخروج
+                        Logout
                       </button>
                     </li>
                   </ul>
@@ -150,7 +157,7 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Link to="/specialties" className="btn btn-primary btn-sm d-none d-lg-inline-flex">
+                <Link to="/specialties" className="btn btn-primary btn-sm d-none d-lg-inline-flex me-2">
                   Book Now
                 </Link>
                 <Link to="/login" className="btn btn-outline-primary btn-sm">

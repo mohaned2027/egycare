@@ -1,4 +1,4 @@
-// Booking Page - صفحة حجز الموعد
+// Booking Page - Appointment booking page
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 const Booking = () => {
   const { doctorId } = useParams();
   const navigate = useNavigate();
-  
+
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedDay, setSelectedDay] = useState('');
@@ -17,7 +17,7 @@ const Booking = () => {
   const [patientEmail, setPatientEmail] = useState('');
   const [notes, setNotes] = useState('');
 
-  // جلب معلومات الدكتور
+  // Fetch doctor information
   useEffect(() => {
     fetch('/data/doctors.json')
       .then(response => response.json())
@@ -27,24 +27,24 @@ const Booking = () => {
         setLoading(false);
       })
       .catch(error => {
-        console.error('خطأ في جلب معلومات الدكتور:', error);
+        console.error('Error fetching doctor information:', error);
         setLoading(false);
       });
   }, [doctorId]);
 
-  // دالة الحجز
+  // Booking function
   const handleBooking = (e) => {
     e.preventDefault();
 
-    // التحقق من البيانات
+    // Validate data
     if (!selectedDay || !selectedTime || !patientName || !patientPhone) {
-      alert('برجاء ملء جميع البيانات المطلوبة');
+      alert('Please fill in all required fields');
       return;
     }
 
-    // إنشاء كائن الحجز
+    // Create appointment object
     const appointment = {
-      id: Date.now(), // استخدام timestamp كـ ID
+      id: Date.now(), // Use timestamp as ID
       doctorId: doctor.id,
       doctorName: doctor.nameAr,
       specialty: doctor.specialtyAr,
@@ -55,21 +55,21 @@ const Booking = () => {
       time: selectedTime,
       notes,
       price: doctor.price,
-      status: 'pending', // قيد الانتظار
+      status: 'pending', // Pending
       createdAt: new Date().toISOString()
     };
 
-    // حفظ الحجز في localStorage (بدلاً من database حقيقي)
+    // Save appointment to localStorage (instead of real database)
     const existingAppointments = JSON.parse(
       localStorage.getItem('appointments') || '[]'
     );
     existingAppointments.push(appointment);
     localStorage.setItem('appointments', JSON.stringify(existingAppointments));
 
-    // رسالة نجاح
-    alert('تم الحجز بنجاح! سيتم التواصل معك قريباً');
-    
-    // الانتقال للصفحة الرئيسية
+    // Success message
+    alert('Booking successful! We will contact you soon.');
+
+    // Navigate to home page
     navigate('/');
   };
 
@@ -79,9 +79,10 @@ const Booking = () => {
         <Header />
         <div className="container py-5 text-center">
           <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">جاري التحميل...</span>
+            <span className="visually-hidden">Loading...</span>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -92,9 +93,10 @@ const Booking = () => {
         <Header />
         <div className="container py-5">
           <div className="alert alert-danger">
-            لم يتم العثور على معلومات الطبيب
+            Doctor not found
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -102,51 +104,44 @@ const Booking = () => {
   return (
     <div>
       <Header />
-      
+
       <section className="py-5">
         <div className="container">
-          <h2 className="mb-4">حجز موعد</h2>
-          
           <div className="row">
-            {/* معلومات الدكتور */}
+            {/* Doctor Information */}
             <div className="col-lg-4 mb-4">
-              <div className="card">
-                <img 
-                  src={doctor.image} 
-                  className="card-img-top" 
-                  alt={doctor.nameAr}
-                  style={{ height: '250px', objectFit: 'cover' }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{doctor.nameAr}</h5>
-                  <p className="text-muted">{doctor.specialtyAr}</p>
-                  <div className="mb-2">
+              <div className="card shadow-sm">
+                <div className="card-body text-center">
+                  <img
+                    src={doctor.image}
+                    alt={doctor.nameAr}
+                    className="rounded-circle mb-3"
+                    style={{ width: '120px', height: '120px', objectFit: 'cover' }}
+                  />
+                  <h5 className="mb-2">{doctor.nameAr}</h5>
+                  <p className="text-muted mb-2">{doctor.specialtyAr}</p>
+                  <div className="d-flex justify-content-center align-items-center mb-2">
                     <i className="bi bi-star-fill text-warning me-1"></i>
-                    {doctor.rating}
+                    <span>{doctor.rating}</span>
                   </div>
-                  <div className="mb-2">
-                    <i className="bi bi-briefcase me-1"></i>
-                    {doctor.experience} سنة خبرة
-                  </div>
-                  <div className="fs-4 fw-bold text-primary">
-                    {doctor.price} جنيه
-                  </div>
+                  <p className="text-primary fw-bold fs-5 mb-0">{doctor.price} EGP</p>
                 </div>
               </div>
             </div>
 
-            {/* نموذج الحجز */}
+            {/* Booking Form */}
             <div className="col-lg-8">
-              <div className="card">
-                <div className="card-body">
+              <div className="card shadow-sm">
+                <div className="card-body p-4">
+                  <h3 className="mb-4">Book Appointment</h3>
                   <form onSubmit={handleBooking}>
-                    {/* بيانات المريض */}
-                    <h5 className="mb-3">بيانات المريض</h5>
+                    {/* Patient Information */}
+                    <h5 className="mb-3">Patient Information</h5>
                     <div className="row mb-3">
                       <div className="col-md-6 mb-3 mb-md-0">
-                        <label className="form-label">الاسم *</label>
-                        <input 
-                          type="text" 
+                        <label className="form-label">Full Name *</label>
+                        <input
+                          type="text"
                           className="form-control"
                           value={patientName}
                           onChange={(e) => setPatientName(e.target.value)}
@@ -154,9 +149,9 @@ const Booking = () => {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label className="form-label">رقم الهاتف *</label>
-                        <input 
-                          type="tel" 
+                        <label className="form-label">Phone Number *</label>
+                        <input
+                          type="tel"
                           className="form-control"
                           value={patientPhone}
                           onChange={(e) => setPatientPhone(e.target.value)}
@@ -165,42 +160,42 @@ const Booking = () => {
                       </div>
                     </div>
 
-                    <div className="mb-3">
-                      <label className="form-label">البريد الإلكتروني</label>
-                      <input 
-                        type="email" 
+                    <div className="mb-4">
+                      <label className="form-label">Email (Optional)</label>
+                      <input
+                        type="email"
                         className="form-control"
                         value={patientEmail}
                         onChange={(e) => setPatientEmail(e.target.value)}
                       />
                     </div>
 
-                    {/* اختيار اليوم والوقت */}
-                    <h5 className="mb-3 mt-4">اختر الموعد</h5>
+                    {/* Appointment Details */}
+                    <h5 className="mb-3">Appointment Details</h5>
                     <div className="row mb-3">
                       <div className="col-md-6 mb-3 mb-md-0">
-                        <label className="form-label">اليوم *</label>
-                        <select 
+                        <label className="form-label">Day *</label>
+                        <select
                           className="form-select"
                           value={selectedDay}
                           onChange={(e) => setSelectedDay(e.target.value)}
                           required
                         >
-                          <option value="">اختر اليوم</option>
+                          <option value="">Select day</option>
                           {doctor.availableDays.map(day => (
                             <option key={day} value={day}>{day}</option>
                           ))}
                         </select>
                       </div>
                       <div className="col-md-6">
-                        <label className="form-label">الوقت *</label>
-                        <select 
+                        <label className="form-label">Time *</label>
+                        <select
                           className="form-select"
                           value={selectedTime}
                           onChange={(e) => setSelectedTime(e.target.value)}
                           required
                         >
-                          <option value="">اختر الوقت</option>
+                          <option value="">Select time</option>
                           {doctor.availableTimes.map(time => (
                             <option key={time} value={time}>{time}</option>
                           ))}
@@ -208,22 +203,22 @@ const Booking = () => {
                       </div>
                     </div>
 
-                    {/* ملاحظات */}
+                    {/* Notes */}
                     <div className="mb-4">
-                      <label className="form-label">ملاحظات إضافية</label>
-                      <textarea 
-                        className="form-control" 
+                      <label className="form-label">Additional Notes</label>
+                      <textarea
+                        className="form-control"
                         rows="3"
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
-                        placeholder="أي معلومات إضافية تود إخبارنا بها..."
+                        placeholder="Any additional information you would like to share..."
                       ></textarea>
                     </div>
 
-                    {/* زر الحجز */}
+                    {/* Booking Button */}
                     <button type="submit" className="btn btn-primary btn-lg w-100">
                       <i className="bi bi-check-circle me-2"></i>
-                      تأكيد الحجز
+                      Confirm Booking
                     </button>
                   </form>
                 </div>

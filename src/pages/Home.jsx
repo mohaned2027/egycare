@@ -8,26 +8,48 @@ const Home = () => {
   const [specialties, setSpecialties] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [reviews, setReviews] = useState([]);
+  const [features, setFeatures] = useState([]);
+  const [aboutData, setAboutData] = useState(null);
 
   const [selectedSpecialty, setSelectedSpecialty] = useState("");
+  const [selectedDoctor, setSelectedDoctor] = useState("");
   const [filteredDoctors, setFilteredDoctors] = useState([]);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   useEffect(() => {
     Promise.all([
       fetch('/data/specialties.json').then(res => res.json()),
-      fetch('/data/doctors.json').then(res => res.json())
+      fetch('/data/doctors.json').then(res => res.json()),
+      fetch('/data/reviews.json').then(res => res.json()),
+      fetch('/data/settings.json').then(res => res.json()),
+      fetch('/data/about.json').then(res => res.json())
     ])
-      .then(([specialtiesData, doctorsData]) => {
-        setSpecialties(specialtiesData.slice(0, 6)); // First 6 specialties
+      .then(([specialtiesData, doctorsData, reviewsData, settingsData, aboutDataFetched]) => {
+        setSpecialties(specialtiesData.slice(0, 6));
         setDoctors(doctorsData);
+        setReviews(reviewsData);
+        setFeatures(settingsData.features || []);
+        setAboutData(aboutDataFetched);
         setLoading(false);
-        setFilteredDoctors(doctorsData); // Show all doctors initially
+        setFilteredDoctors(doctorsData);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
         setLoading(false);
       });
   }, []);
+
+  // Auto-slide reviews
+  useEffect(() => {
+    if (reviews.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+      }, 5000); // Change slide every 5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [reviews]);
 
   const getDoctorCount = (specialtyId) => {
     return doctors.filter(doc => doc.specialtyId === specialtyId).length;
@@ -48,12 +70,23 @@ const Home = () => {
   const handleSpecialtyChange = (e) => {
     const value = e.target.value;
     setSelectedSpecialty(value);
+    setSelectedDoctor("");
 
     if (value === "") {
-      setFilteredDoctors(doctors); // لو لم يتم اختيار تخصص → كل الدكاترة
+      setFilteredDoctors(doctors);
     } else {
       const filtered = doctors.filter(doc => doc.specialtyId === Number(value));
       setFilteredDoctors(filtered);
+    }
+  };
+
+  const handleSearch = () => {
+    if (selectedDoctor) {
+      window.location.href = `/booking/${selectedDoctor}`;
+    } else if (selectedSpecialty) {
+      window.location.href = `/specialty/${selectedSpecialty}`;
+    } else {
+      window.location.href = '/specialties';
     }
   };
 
@@ -75,7 +108,7 @@ const Home = () => {
               </p>
               <div className="d-flex gap-3 justify-content-lg-start justify-content-center">
                 <Link to="/specialties" className="btn btn-light btn-lg">
-                  Book Your Appointment Now
+                  Book  Now
                 </Link>
                 <Link to="/dashboard" className="btn btn-outline-primary btn-lg" style={{ backgroundColor: 'rgba(255,255,255,0.2)', borderColor: 'white', color: 'white' }}>
                   Dashboard
@@ -93,16 +126,20 @@ const Home = () => {
                     <select className="form-select" onChange={handleSpecialtyChange}>
                       <option value="">Choose Specialty</option>
                       {specialties.map((specialty) => (
-                        <option key={specialty.id} value={specialty.id}>
-                          {specialty.nameAr}
-                        </option>
+                      <option key={specialty.id} value={specialty.id}>
+                        {specialty.name}
+                      </option>
                       ))}
                     </select>
                   </div>
 
                   <div className="mb-3">
                     <label className="form-label">Choose Doctor</label>
-                    <select className="form-select">
+                    <select
+                      className="form-select"
+                      value={selectedDoctor}
+                      onChange={(e) => setSelectedDoctor(e.target.value)}
+                    >
                       <option value="">Choose Doctor</option>
                       {filteredDoctors.map((doctor) => (
                         <option key={doctor.id} value={doctor.id}>
@@ -127,10 +164,14 @@ const Home = () => {
                     <input type="date" className="form-control" />
                   </div>
 
-                  <Link to="/specialties" className="btn btn-primary w-100">
+                  <button
+                    type="button"
+                    onClick={handleSearch}
+                    className="btn btn-primary w-100"
+                  >
                     <i className="bi bi-search me-2"></i>
-                    Search for Doctor
-                  </Link>
+                    Search
+                  </button>
                 </form>
               </div>
             </div>
@@ -146,42 +187,17 @@ const Home = () => {
             We provide you with a comprehensive medical experience using the latest technologies and highest quality standards
           </p>
           <div className="row g-4">
-            <div className="col-md-3 col-6">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <i className="bi bi-clock"></i>
+            {features.map((feature, index) => (
+              <div key={index} className="col-md-3 col-6">
+                <div className="feature-card">
+                  <div className="feature-icon">
+                    <i className={`bi ${feature.icon}`}></i>
+                  </div>
+                  <h4>{feature.title}</h4>
+                  <p>{feature.description}</p>
                 </div>
-                <h4>Available 24/7</h4>
-                <p>Service available around the clock for your convenience</p>
               </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <i className="bi bi-calendar-check"></i>
-                </div>
-                <h4>Quick & Easy Booking</h4>
-                <p>Book your appointment in simple steps</p>
-              </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <i className="bi bi-shield-check"></i>
-                </div>
-                <h4>Secure Medical History</h4>
-                <p>Safe management of medical records and history</p>
-              </div>
-            </div>
-            <div className="col-md-3 col-6">
-              <div className="feature-card">
-                <div className="feature-icon">
-                  <i className="bi bi-patch-check"></i>
-                </div>
-                <h4>Certified Doctors</h4>
-                <p>Network of the best qualified doctors</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -210,8 +226,8 @@ const Home = () => {
                       <div className={`specialty-card-icon ${iconInfo.color}`}>
                         <i className={`bi ${iconInfo.icon}`}></i>
                       </div>
-                      <h5>{specialty.nameAr}</h5>
-                      <p className="small mb-0">{specialty.descriptionAr}</p>
+                      <h5>{specialty.name}</h5>
+                      <p className="small mb-0">{specialty.description}</p>
                       <span className="badge bg-light text-dark mt-2">
                         {doctorCount} doctor
                       </span>
@@ -235,7 +251,73 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">Our Patients' Reviews</h2>
           <p className="section-subtitle">What our patients say about their experience with us</p>
-          {/* ... Reviews as in the previous version ... */}
+          <div className="reviews-carousel">
+            {reviews.map((review, index) => {
+              const fullStars = Math.floor(review.rating);
+              const hasHalfStar = review.rating % 1 !== 0;
+              const isCenter = index === currentReviewIndex;
+              const isLeft = index === (currentReviewIndex - 1 + reviews.length) % reviews.length;
+              const isRight = index === (currentReviewIndex + 1) % reviews.length;
+
+              let transformStyle = {};
+              let opacity = 0.5;
+              let scale = 0.8;
+
+              if (isCenter) {
+                transformStyle = { transform: 'translateX(0) scale(1)', zIndex: 10 };
+                opacity = 1;
+                scale = 1;
+              } else if (isLeft) {
+                transformStyle = { transform: 'translateX(-70%) scale(0.8)', zIndex: 5 };
+                opacity = 0.7;
+                scale = 0.8;
+              } else if (isRight) {
+                transformStyle = { transform: 'translateX(70%) scale(0.8)', zIndex: 5 };
+                opacity = 0.7;
+                scale = 0.8;
+              } else {
+                transformStyle = { transform: 'translateX(0) scale(0.6)', zIndex: 1 };
+                opacity = 0.3;
+                scale = 0.6;
+              }
+
+              return (
+                <div
+                  key={review.id}
+                  className="review-card-carousel"
+                  style={{
+                    ...transformStyle,
+                    opacity,
+                    transition: 'all 0.5s ease-in-out',
+                  }}
+                >
+                  <div className="review-card">
+                    <div className="review-header">
+                      <div className="review-avatar">
+                        <i className="bi bi-person-circle"></i>
+                      </div>
+                      <div>
+                        <h5 className="mb-0">{review.name}</h5>
+                        <div className="review-stars">
+                          {[...Array(fullStars)].map((_, i) => (
+                            <i key={i} className="bi bi-star-fill"></i>
+                          ))}
+                          {hasHalfStar && <i className="bi bi-star-half"></i>}
+                          {[...Array(5 - Math.ceil(review.rating))].map((_, i) => (
+                            <i key={i} className="bi bi-star"></i>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="review-text" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: scale < 1 ? 'nowrap' : 'normal' }}>
+                      "{review.text}"
+                    </p>
+                    <small className="text-muted">{review.time}</small>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
