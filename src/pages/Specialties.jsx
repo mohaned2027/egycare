@@ -61,7 +61,7 @@ const Specialties = () => {
     <div>
       <Header />
 
-      <section className="hero-section" style={{ padding: '3rem 0', minHeight: 'auto' }}>
+      <section className="hero-section1" style={{ padding: '3rem 0', minHeight: 'auto' }}>
         <div className="container">
           <h1>Choose Medical Specialty</h1>
           <p className="mb-4">Book a New Appointment</p>
