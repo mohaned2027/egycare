@@ -81,7 +81,7 @@ const Header = () => {
                 className={`nav-link ${location.pathname.includes('/specialties') ? 'active' : ''}`}
                 to="/specialties"
               >
-                Specialties
+                Medical Specialties
               </Link>
             </li>
             <li className="nav-item">
@@ -89,7 +89,7 @@ const Header = () => {
                 className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
                 to="/about"
               >
-                About
+              Patient Dashboard
               </Link>
             </li>
             <li className="nav-item">
@@ -98,6 +98,14 @@ const Header = () => {
                 to="/contact"
               >
                 Contact
+              </Link>
+            </li>
+             <li className="nav-item">
+              <Link
+                className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
+                to="/contact"
+              >
+                Booking an Appointment
               </Link>
             </li>
           </ul>
