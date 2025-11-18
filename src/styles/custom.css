@@ -105,6 +105,92 @@ body {
     font-size: 0.875rem;
     padding: 0.5rem 1rem;
   }
+
+  /* Mobile Dropdown Menu */
+  .dropdown {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  .dropdown-toggle {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.75rem 1rem !important;
+    background: var(--egycare-light) !important;
+    border: 1px solid var(--egycare-border) !important;
+    border-radius: 8px !important;
+    color: var(--egycare-text) !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .dropdown-toggle:hover {
+    background: var(--egycare-primary) !important;
+    color: white !important;
+    border-color: var(--egycare-primary) !important;
+  }
+
+  .dropdown-toggle img {
+    margin-right: 0.5rem !important;
+  }
+
+  .dropdown-menu {
+    position: absolute !important;
+    bottom: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1px solid var(--egycare-border) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    background: white !important;
+    z-index: 1050 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.2s ease, visibility 0.2s ease !important;
+  }
+
+  .dropdown.show .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .dropdown-item {
+    display: block !important;
+    padding: 0.75rem 1rem !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--egycare-border) !important;
+    transition: all 0.3s ease !important;
+    color: var(--egycare-text) !important;
+    text-decoration: none !important;
+  }
+
+  .dropdown-item:last-child {
+    border-bottom: none !important;
+  }
+
+  .dropdown-item:hover {
+    background: var(--egycare-light) !important;
+    color: var(--egycare-primary) !important;
+    transform: translateX(5px);
+  }
+
+  .dropdown-toggle::after {
+    margin-left: auto !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  .dropdown.show .dropdown-toggle::after {
+    transform: rotate(180deg) !important;
+  }
 }
 
 /* Hero Section - Modern Design with Background Image */
@@ -480,7 +566,11 @@ body {
 }
 
 .pagination .page-item.active .page-link {
-  background: linear-gradient(135deg, var(--egycare-primary), var(--egycare-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--egycare-primary),
+    var(--egycare-secondary)
+  );
   color: white;
   border-color: var(--egycare-primary);
   box-shadow: 0 4px 12px rgba(11, 95, 165, 0.3);
@@ -587,7 +677,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--egycare-primary), var(--egycare-secondary));
+  background: linear-gradient(
+    135deg,
+    var(--egycare-primary),
+    var(--egycare-secondary)
+  );
   color: white;
   font-size: 1.25rem;
 }
@@ -780,5 +874,33 @@ body {
   to {
     transform: translateX(100px);
     opacity: 0.5;
+  }
+}
+
+/* Reviews Carousel */
+.reviews-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 450px;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.review-card-carousel {
+  position: absolute;
+  width: 400px;
+  max-width: 90%;
+  transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .reviews-carousel {
+    height: 400px;
+  }
+
+  .review-card-carousel {
+    width: 300px;
   }
 }

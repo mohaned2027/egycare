@@ -15,6 +15,7 @@ const Home = () => {
   const [selectedSpecialty, setSelectedSpecialty] = useState("");
   const [selectedDoctor, setSelectedDoctor] = useState("");
   const [filteredDoctors, setFilteredDoctors] = useState([]);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
 
   useEffect(() => {
     Promise.all([
@@ -38,6 +39,17 @@ const Home = () => {
         setLoading(false);
       });
   }, []);
+
+  // Auto-slide reviews
+  useEffect(() => {
+    if (reviews.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+      }, 5000); // Change slide every 5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [reviews]);
 
   const getDoctorCount = (specialtyId) => {
     return doctors.filter(doc => doc.specialtyId === specialtyId).length;
@@ -239,13 +251,46 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">Our Patients' Reviews</h2>
           <p className="section-subtitle">What our patients say about their experience with us</p>
-          <div className="row g-4">
-            {reviews.slice(0, 3).map((review) => {
+          <div className="reviews-carousel">
+            {reviews.map((review, index) => {
               const fullStars = Math.floor(review.rating);
               const hasHalfStar = review.rating % 1 !== 0;
+              const isCenter = index === currentReviewIndex;
+              const isLeft = index === (currentReviewIndex - 1 + reviews.length) % reviews.length;
+              const isRight = index === (currentReviewIndex + 1) % reviews.length;
+
+              let transformStyle = {};
+              let opacity = 0.5;
+              let scale = 0.8;
+
+              if (isCenter) {
+                transformStyle = { transform: 'translateX(0) scale(1)', zIndex: 10 };
+                opacity = 1;
+                scale = 1;
+              } else if (isLeft) {
+                transformStyle = { transform: 'translateX(-70%) scale(0.8)', zIndex: 5 };
+                opacity = 0.7;
+                scale = 0.8;
+              } else if (isRight) {
+                transformStyle = { transform: 'translateX(70%) scale(0.8)', zIndex: 5 };
+                opacity = 0.7;
+                scale = 0.8;
+              } else {
+                transformStyle = { transform: 'translateX(0) scale(0.6)', zIndex: 1 };
+                opacity = 0.3;
+                scale = 0.6;
+              }
 
               return (
-                <div key={review.id} className="col-md-4">
+                <div
+                  key={review.id}
+                  className="review-card-carousel"
+                  style={{
+                    ...transformStyle,
+                    opacity,
+                    transition: 'all 0.5s ease-in-out',
+                  }}
+                >
                   <div className="review-card">
                     <div className="review-header">
                       <div className="review-avatar">
@@ -264,7 +309,9 @@ const Home = () => {
                         </div>
                       </div>
                     </div>
-                    <p className="review-text">"{review.text}"</p>
+                    <p className="review-text" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: scale < 1 ? 'nowrap' : 'normal' }}>
+                      "{review.text}"
+                    </p>
                     <small className="text-muted">{review.time}</small>
                   </div>
                 </div>
