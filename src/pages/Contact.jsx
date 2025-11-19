@@ -35,6 +35,14 @@ const Contact = () => {
     <div>
       <Header />
 
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="container">
+          <h1>Contact Us</h1>
+          <p>We are here to answer your questions</p>
+        </div>
+      </section>
+
       <section className="py-5">
         <div className="container">
           {/* Contact Form with Map */}
