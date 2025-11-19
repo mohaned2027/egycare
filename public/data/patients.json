@@ -13,7 +13,7 @@
     "address": "شارع التحرير، القاهرة، مصر",
     "hasChronicDisease": true,
     "chronicDisease": "ضغط الدم المرتفع",
-    "profileImage": "/placeholder.svg"
+    "profileImage": "/user/patient.jpg"
   },
   {
     "id": 2,
@@ -29,7 +29,7 @@
     "address": "حي الزمالك، القاهرة، مصر",
     "hasChronicDisease": false,
     "chronicDisease": null,
-    "profileImage": "/placeholder.svg"
+    "profileImage": "/user/patient1.jpg"
   },
   {
     "id": 3,
@@ -45,6 +45,7 @@
     "address": "شارع فيصل، الجيزة، مصر",
     "hasChronicDisease": true,
     "chronicDisease": "السكري من النوع الثاني",
-    "profileImage": "/placeholder.svg"
+    
+    "profileImage": "/user/patient2.jpg"
   }
 ]

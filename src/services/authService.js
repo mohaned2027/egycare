@@ -1,20 +1,16 @@
 // Authentication Service - خدمة المصادقة
 
-// دالة تسجيل الدخول - ترسل طلب للـ API وتتحقق من البيانات
 export const login = async (email, password) => {
   try {
-    // جلب بيانات المستخدمين من API
-    const response = await fetch('/data/patients.json');
+    const response = await fetch('/data/users.json');
     const users = await response.json();
     
-    // البحث عن المستخدم بالبريد الإلكتروني وكلمة المرور
     const user = users.find(
       u => u.email === email && u.password === password
     );
     
-    // إذا وُجد المستخدم
     if (user) {
-      // حفظ بيانات المستخدم في localStorage
+      console.log(user);
       localStorage.setItem('userToken', user.token);
       localStorage.setItem('userData', JSON.stringify({
         id: user.id,

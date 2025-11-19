@@ -5,7 +5,9 @@
     "email": "ahmed@example.com",
     "password": "123456",
     "phone": "01012345678",
-    "token": "token_ahmed_123"
+    "token": "token_ahmed_123",
+    "profileImage": "/user/patient.jpg"
+    
   },
   {
     "id": 2,
@@ -13,7 +15,8 @@
     "email": "fatma@example.com",
     "password": "123456",
     "phone": "01098765432",
-    "token": "token_fatma_456"
+    "token": "token_fatma_456",
+    "profileImage": "/user/patient1.jpg"
   },
   {
     "id": 3,
@@ -21,6 +24,7 @@
     "email": "mahmoud@example.com",
     "password": "123456",
     "phone": "01123456789",
-    "token": "token_mahmoud_789"
+    "token": "token_mahmoud_789",
+    "profileImage": "/user/patient2.jpg"
   }
 ]
