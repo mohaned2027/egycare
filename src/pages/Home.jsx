@@ -189,7 +189,7 @@ const Home = () => {
           </p>
           <div className="row g-4">
             {features.map((feature, index) => (
-              <div key={index} className="col-md-3 col-6">
+              <div key={index} className="col-md-3 col-12">
                 <div className="feature-card">
                   <div className="feature-icon">
                     <i className={`bi ${feature.icon}`}></i>
@@ -222,7 +222,7 @@ const Home = () => {
                 const doctorCount = getDoctorCount(specialty.id);
 
                 return (
-                  <div key={specialty.id} className="col-md-4 col-lg-2 col-6">
+                  <div key={specialty.id} className="col-md-4 col-lg-2 col-12">
                     <Link to={`/specialty/${specialty.id}`} className="specialty-card">
                       <div className={`specialty-card-icon ${iconInfo.color}`}>
                         <i className={`bi ${iconInfo.icon}`}></i>
@@ -322,7 +322,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section */}php
       <section className="py-5 bg-light-egycare">
         <div className="container text-center">
           <h2 className="section-title">Start Your Health Journey Today</h2>
