@@ -100,14 +100,7 @@ const Header = () => {
                 Contact
               </Link>
             </li>
-             <li className="nav-item">
-              <Link
-                className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}
-                to="/contact"
-              >
-                Booking an Appointment
-              </Link>
-            </li>
+        
           </ul>
 
           {/* User Actions */}
