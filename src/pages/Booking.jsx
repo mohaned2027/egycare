@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SpecialtyProgress from '../components/SpecialtyProgress';
 
 const Booking = () => {
   const { doctorId } = useParams();
@@ -16,6 +17,7 @@ const Booking = () => {
   const [patientPhone, setPatientPhone] = useState('');
   const [patientEmail, setPatientEmail] = useState('');
   const [notes, setNotes] = useState('');
+  const [step, setStep] = useState(3);
 
   // Fetch doctor information
   useEffect(() => {
@@ -66,11 +68,8 @@ const Booking = () => {
     existingAppointments.push(appointment);
     localStorage.setItem('appointments', JSON.stringify(existingAppointments));
 
-    // Success message
-    alert('Booking successful! We will contact you soon.');
-
-    // Navigate to home page
-    navigate('/');
+    // Navigate to confirmation page
+    navigate('/confirm', { state: { appointment } });
   };
 
   if (loading) {
@@ -104,6 +103,7 @@ const Booking = () => {
   return (
     <div>
       <Header />
+         <SpecialtyProgress step={step} />
 
       <section className="py-5">
         <div className="container">

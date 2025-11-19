@@ -2,7 +2,7 @@ import React from "react";
 
 const SpecialtyCard = ({ specialty, selected, onClick, iconInfo, doctorCount }) => {
   return (
-    <div className="col-md-4 col-lg-3 col-6">
+    <div className="col-md-4 col-lg-3 col-12">
       <div
         onClick={onClick}
         className={`specialty-card ${selected ? "selected" : ""}`}

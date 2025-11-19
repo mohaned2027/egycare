@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../pages/Doctor.css";
+import "../styles/Doctor.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SpecialtyProgress from "../components/SpecialtyProgress";
 import NavigationButtons from "../components/NavigationButtons";
+import DoctorCard from "../components/DoctorCard";
+import DoctorGrid from "../components/DoctorGrid";
 
 const SpecialtyDoctors = () => {
-  const { specialtyId } = useParams();
+  const { id: specialtyId } = useParams();
   const [doctors, setDoctors] = useState([]);
   const [specialtyName, setSpecialtyName] = useState("");
   const [loading, setLoading] = useState(true);
@@ -19,7 +21,6 @@ const SpecialtyDoctors = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // جلب بيانات الدكاترة
         const doctorsRes = await fetch("/data/doctors.json");
         const doctorsData = await doctorsRes.json();
 
@@ -28,12 +29,10 @@ const SpecialtyDoctors = () => {
         const specialtiesData = await specialtiesRes.json();
 
         const specIdNum = Number(specialtyId);
-        console.log("specialtyId param:", specialtyId, typeof specialtyId);
-        console.log("specIdNum:", specIdNum);
 
         // فلترة الدكاترة حسب التخصص
         const filteredDoctors = doctorsData.filter(
-          (doc) => Number(doc.specialtyId) === specIdNum
+          (doc) => String(doc.specialtyId) === String(specIdNum)
         );
         setDoctors(filteredDoctors);
 
@@ -81,25 +80,15 @@ const SpecialtyDoctors = () => {
           ) : (
             <div className="row g-4">
               {doctors.map((doc) => (
-                <div key={doc.id} className="col-md-4 col-lg-3 col-6">
-                  <div
-                    className={`doctor-card ${
-                      selectedDoctorId === doc.id ? "selected" : ""
-                    }`}
-                    onClick={() => handleSelectDoctor(doc.id)}
-                  >
-                    <img
-                      src={doc.image}
-                      alt={doc.nameAr}
-                      className="doctor-image mb-2"
-                    />
-                    <h5>{doc.nameAr}</h5>
-                    <p className="text-muted small">
-                      {doc.experience} years experience
-                    </p>
-                  </div>
-                </div>
-              ))}
+  <div key={doc.id} className="col-md-6 col-lg-4">
+    <DoctorCard
+      doctor={doc}
+      selected={selectedDoctorId === doc.id}
+      onClick={() => handleSelectDoctor(doc.id)}
+    />
+  </div>
+))}
+
             </div>
           )}
 
@@ -107,6 +96,8 @@ const SpecialtyDoctors = () => {
             disabled={!selectedDoctorId}
             onPrev={() => navigate("/specialties")}
             onNext={() => navigate(`/booking/${selectedDoctorId}`)}
+            prevText="الخلف"
+            nextText="التالي"
           />
         </div>
       </section>

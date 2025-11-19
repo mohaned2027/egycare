@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Specialties from "./pages/Specialties";
 import SpecialtyDoctors from "./pages/SpecialtyDoctors";
 import Booking from "./pages/Booking";
+import Confirm from "./pages/Confirm";
 import AdminDashboard from "./pages/AdminDashboard";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
@@ -41,6 +42,9 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
+        {/* Booking Confirmation Page */}
+        <Route path="/confirm" element={<Confirm />} />
 
         {/* Login Page */}
         <Route path="/login" element={<Login />} />

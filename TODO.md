@@ -1,10 +1,9 @@
-# TODO: Implement Motion Effect for Reviews Section
+# TODO: Fix Specialty Selection Flow and Add Confirm Page
 
 ## Tasks
 
-- [x] Add React state for carousel index in Home.jsx
-- [x] Modify reviews section JSX to display carousel with transforms
-- [x] Add CSS styles for sliding animation (translateX, scale, opacity)
-- [x] Implement auto-sliding functionality with useEffect and setInterval
-- [x] Ensure responsive design and text clipping for side reviews
-- [ ] Test the carousel functionality
+- [ ] Fix navigation in SpecialtyDoctors.jsx to pass doctorId as URL param
+- [ ] Create Confirm.jsx page with booking invoice display
+- [ ] Update Booking.jsx to navigate to Confirm page after successful booking
+- [ ] Add /confirm route in App.tsx
+- [ ] Test the complete flow from specialty selection to booking confirmation

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Header from '../components/Header';
@@ -9,6 +9,7 @@ import SpecialtyGrid from '../components//SpecialtyGrid';
 import NavigationButtons from '../components//NavigationButtons';
 
 import '../pages/Specialties.css';
+import SearchBar from '../components/SearchBar';
 
 const Specialties = () => {
   const [specialties, setSpecialties] = useState([]);
@@ -16,6 +17,7 @@ const Specialties = () => {
   const [loading, setLoading] = useState(true);
   const [selectedSpecialtyId, setSelectedSpecialtyId] = useState(null);
   const [step, setStep] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const navigate = useNavigate();
 
@@ -47,6 +49,14 @@ const Specialties = () => {
     return iconMap[icon] || { icon: 'bi-hospital', color: 'icon-blue' };
   };
 
+  const filteredSpecialties = useMemo(() => {
+    if (!searchTerm) return specialties;
+    return specialties.filter(specialty =>
+      specialty.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      specialty.nameAr.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [specialties, searchTerm]);
+
   return (
     <div>
       <Header />
@@ -56,6 +66,11 @@ const Specialties = () => {
       <section className="py-5 bg-light-egycare">
         <div className="container">
           <h2 className="section-title mb-5">All Medical Specialties</h2>
+          <SearchBar 
+            value={searchTerm} 
+            onChange={setSearchTerm} 
+            placeholder="Search specialties..." 
+          />
 
           {loading ? (
             <div className="text-center">
@@ -63,7 +78,7 @@ const Specialties = () => {
             </div>
           ) : (
             <SpecialtyGrid
-              specialties={specialties}
+              specialties={filteredSpecialties}
               doctors={doctors}
               selectedId={selectedSpecialtyId}
               getSpecialtyIcon={getSpecialtyIcon}
