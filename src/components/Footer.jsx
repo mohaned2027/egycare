@@ -19,7 +19,7 @@ const Footer = () => {
           {/* EgyCare Information */}
           <div className="col-md-4 mb-4 mb-md-0">
             <h5>
-              <i className="bi bi-hospital me-2"></i>
+             <i className={`bi ${settings?.logo?.iconClass || 'bi-heart-pulse-fill'}`} style={{ color: 'white', fontSize: '1.25rem' , padding: 5 , }}></i>
               {settings?.siteName || 'EgyCare'}
             </h5>
             <p className="mt-3">

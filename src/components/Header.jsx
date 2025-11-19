@@ -89,7 +89,7 @@ const Header = () => {
                 className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
                 to="/about"
               >
-              Patient Dashboard
+              About
               </Link>
             </li>
             <li className="nav-item">
