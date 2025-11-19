@@ -322,7 +322,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}php
+      {/* CTA Section */}
       <section className="py-5 bg-light-egycare">
         <div className="container text-center">
           <h2 className="section-title">Start Your Health Journey Today</h2>
