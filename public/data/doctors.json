@@ -8,7 +8,7 @@
     "specialtyAr": "القلب والأوعية الدموية",
     "rating": 4.9,
     "experience": 15,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/male/ahmed-hassan.jpg",
     "price": 300,
     "availableDays": ["Sunday", "Tuesday", "Thursday"],
     "availableTimes": ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
@@ -22,7 +22,7 @@
     "specialtyAr": "القلب والأوعية الدموية",
     "rating": 4.8,
     "experience": 12,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/female/sara-mohamed.jpg",
     "price": 250,
     "availableDays": ["Monday", "Wednesday", "Saturday"],
     "availableTimes": ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM"]
@@ -36,7 +36,7 @@
     "specialtyAr": "الجلدية",
     "rating": 4.7,
     "experience": 10,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/female/mona-ali.jpg",
     "price": 200,
     "availableDays": ["Sunday", "Monday", "Wednesday"],
     "availableTimes": ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
@@ -50,7 +50,7 @@
     "specialtyAr": "الجلدية",
     "rating": 4.9,
     "experience": 18,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/male/khaled-ibrahim.jpg",
     "price": 350,
     "availableDays": ["Tuesday", "Thursday", "Saturday"],
     "availableTimes": ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM"]
@@ -64,7 +64,7 @@
     "specialtyAr": "طب الأطفال",
     "rating": 4.8,
     "experience": 14,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/female/nadia-salem.jpg",
     "price": 250,
     "availableDays": ["Sunday", "Tuesday", "Thursday"],
     "availableTimes": ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
@@ -78,7 +78,7 @@
     "specialtyAr": "طب الأطفال",
     "rating": 4.6,
     "experience": 8,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/male/yasser-ahmed.jpg",
     "price": 180,
     "availableDays": ["Monday", "Wednesday", "Friday"],
     "availableTimes": ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM"]
@@ -92,7 +92,7 @@
     "specialtyAr": "العظام",
     "rating": 4.9,
     "experience": 20,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/female/hala-mahmoud.jpg",
     "price": 400,
     "availableDays": ["Sunday", "Tuesday", "Thursday"],
     "availableTimes": ["10:00 AM", "12:00 PM", "2:00 PM"]
@@ -106,7 +106,7 @@
     "specialtyAr": "الأعصاب",
     "rating": 4.8,
     "experience": 16,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/male/omar-farid.jpg",
     "price": 350,
     "availableDays": ["Monday", "Wednesday", "Saturday"],
     "availableTimes": ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM"]
@@ -120,7 +120,7 @@
     "specialtyAr": "العيون",
     "rating": 4.7,
     "experience": 11,
-    "image": "/placeholder.svg",
+    "image": "/images/doctors/female/laila-hassan.jpg",
     "price": 280,
     "availableDays": ["Sunday", "Tuesday", "Friday"],
     "availableTimes": ["10:00 AM", "12:00 PM", "2:00 PM", "4:00 PM"]
