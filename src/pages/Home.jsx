@@ -216,7 +216,8 @@ const Home = () => {
               </div>
             </div>
           ) : (
-            <div className="row g-4">
+            <div className="CARD">
+            <div className="row g-4 ">
               {specialties.map(specialty => {
                 const iconInfo = getSpecialtyIcon(specialty.icon);
                 const doctorCount = getDoctorCount(specialty.id);
@@ -236,6 +237,7 @@ const Home = () => {
                   </div>
                 );
               })}
+            </div>
             </div>
           )}
 

@@ -62,122 +62,142 @@ const Dashboard = () => {
     <div>
       <Header />
 
-      <section className="py-5 bg-light">
+      <section className="py-4 py-md-5 bg-light">
         <div className="container">
-          <h2 className="mb-4">
+          {/* Page Title */}
+          <h2 className="mb-4 fs-3 fs-md-2">
             <i className="bi bi-speedometer2 me-2"></i>
             Dashboard
           </h2>
 
-          {/* Statistics */}
-          <div className="row mb-4">
-            <div className="col-md-3 mb-3">
-              <div className="card shadow-sm border-0 bg-primary text-white">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h6 className="mb-0">Total Appointments</h6>
-                      <h2 className="mb-0">{appointments.length}</h2>
+          {/* Statistics Cards */}
+          <div className="row g-3 g-md-4 mb-4">
+            {/* Total Appointments */}
+            <div className="col-6 col-lg-3">
+              <div className="card shadow-sm border-0 bg-primary text-white h-100">
+                <div className="card-body p-3 p-md-4">
+                  <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                    <div className="mb-2 mb-md-0">
+                      <h6 className="mb-1 mb-md-2 fs-6 fs-md-5">Total Appointments</h6>
+                      <h2 className="mb-0 fs-2 fs-md-1 fw-bold">{appointments.length}</h2>
                     </div>
-                    <i className="bi bi-calendar-event fs-1 opacity-75"></i>
+                    <i className="bi bi-calendar-event fs-1 fs-md-1 opacity-75 d-none d-md-block"></i>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-3 mb-3">
-              <div className="card shadow-sm border-0 bg-success text-white">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h6 className="mb-0">Medical Records</h6>
-                      <h2 className="mb-0">{medicalHistory.length}</h2>
+
+            {/* Medical Records */}
+            <div className="col-6 col-lg-3">
+              <div className="card shadow-sm border-0 bg-success text-white h-100">
+                <div className="card-body p-3 p-md-4">
+                  <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                    <div className="mb-2 mb-md-0">
+                      <h6 className="mb-1 mb-md-2 fs-6 fs-md-5">Medical Records</h6>
+                      <h2 className="mb-0 fs-2 fs-md-1 fw-bold">{medicalHistory.length}</h2>
                     </div>
-                    <i className="bi bi-file-medical fs-1 opacity-75"></i>
+                    <i className="bi bi-file-medical fs-1 fs-md-1 opacity-75 d-none d-md-block"></i>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-3 mb-3">
-              <div className="card shadow-sm border-0 bg-info text-white">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h6 className="mb-0">Lab Tests</h6>
-                      <h2 className="mb-0">{labTests.length}</h2>
+
+            {/* Lab Tests */}
+            <div className="col-6 col-lg-3">
+              <div className="card shadow-sm border-0 bg-info text-white h-100">
+                <div className="card-body p-3 p-md-4">
+                  <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                    <div className="mb-2 mb-md-0">
+                      <h6 className="mb-1 mb-md-2 fs-6 fs-md-5">Lab Tests</h6>
+                      <h2 className="mb-0 fs-2 fs-md-1 fw-bold">{labTests.length}</h2>
                     </div>
-                    <i className="bi bi-clipboard2-data fs-1 opacity-75"></i>
+                    <i className="bi bi-clipboard2-data fs-1 fs-md-1 opacity-75 d-none d-md-block"></i>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-3 mb-3">
-              <div className="card shadow-sm border-0 bg-warning text-white">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div>
-                      <h6 className="mb-0">Prescriptions</h6>
-                      <h2 className="mb-0">{prescriptions.length}</h2>
+
+            {/* Prescriptions */}
+            <div className="col-6 col-lg-3">
+              <div className="card shadow-sm border-0 bg-warning text-white h-100">
+                <div className="card-body p-3 p-md-4">
+                  <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                    <div className="mb-2 mb-md-0">
+                      <h6 className="mb-1 mb-md-2 fs-6 fs-md-5">Prescriptions</h6>
+                      <h2 className="mb-0 fs-2 fs-md-1 fw-bold">{prescriptions.length}</h2>
                     </div>
-                    <i className="bi bi-capsule fs-1 opacity-75"></i>
+                    <i className="bi bi-capsule fs-1 fs-md-1 opacity-75 d-none d-md-block"></i>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Tab Navigation */}
-          <ul className="nav nav-tabs" role="tablist">
-            <li className="nav-item" role="presentation">
-              <button
-                className={`nav-link ${activeTab === 'appointments' ? 'active' : ''}`}
-                onClick={() => setActiveTab('appointments')}
-              >
-                <i className="bi bi-calendar-event me-2"></i>
-                Appointments
-              </button>
-            </li>
-            <li className="nav-item" role="presentation">
-              <button
-                className={`nav-link ${activeTab === 'history' ? 'active' : ''}`}
-                onClick={() => setActiveTab('history')}
-              >
-                <i className="bi bi-file-medical me-2"></i>
-                Medical History
-              </button>
-            </li>
-            <li className="nav-item" role="presentation">
-              <button
-                className={`nav-link ${activeTab === 'tests' ? 'active' : ''}`}
-                onClick={() => setActiveTab('tests')}
-              >
-                <i className="bi bi-clipboard2-data me-2"></i>
-                Lab Tests
-              </button>
-            </li>
-            <li className="nav-item" role="presentation">
-              <button
-                className={`nav-link ${activeTab === 'prescriptions' ? 'active' : ''}`}
-                onClick={() => setActiveTab('prescriptions')}
-              >
-                <i className="bi bi-capsule me-2"></i>
-                Prescriptions
-              </button>
-            </li>
-          </ul>
+          {/* Tab Navigation - Responsive */}
+          <div className="card shadow-sm border-0 mb-4">
+            <div className="card-body p-2 p-md-3">
+              <ul className="nav nav-pills nav-fill flex-column flex-md-row gap-2" role="tablist">
+                <li className="nav-item" role="presentation">
+                  <button
+                    className={`nav-link ${activeTab === 'appointments' ? 'active' : ''} d-flex align-items-center justify-content-center py-2 py-md-3`}
+                    onClick={() => setActiveTab('appointments')}
+                  >
+                    <i className="bi bi-calendar-event me-2"></i>
+                    <span className="d-none d-sm-inline">Appointments</span>
+                    <span className="d-sm-none">Appts</span>
+                  </button>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <button
+                    className={`nav-link ${activeTab === 'history' ? 'active' : ''} d-flex align-items-center justify-content-center py-2 py-md-3`}
+                    onClick={() => setActiveTab('history')}
+                  >
+                    <i className="bi bi-file-medical me-2"></i>
+                    <span className="d-none d-sm-inline">Medical History</span>
+                    <span className="d-sm-none">History</span>
+                  </button>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <button
+                    className={`nav-link ${activeTab === 'tests' ? 'active' : ''} d-flex align-items-center justify-content-center py-2 py-md-3`}
+                    onClick={() => setActiveTab('tests')}
+                  >
+                    <i className="bi bi-clipboard2-data me-2"></i>
+                    <span className="d-none d-sm-inline">Lab Tests</span>
+                    <span className="d-sm-none">Tests</span>
+                  </button>
+                </li>
+                <li className="nav-item" role="presentation">
+                  <button
+                    className={`nav-link ${activeTab === 'prescriptions' ? 'active' : ''} d-flex align-items-center justify-content-center py-2 py-md-3`}
+                    onClick={() => setActiveTab('prescriptions')}
+                  >
+                    <i className="bi bi-capsule me-2"></i>
+                    <span className="d-none d-sm-inline">Prescriptions</span>
+                    <span className="d-sm-none">Rx</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
 
           {/* Tab Content */}
-          <div className="tab-content mt-4">
+          <div className="tab-content">
             {/* Appointments Content */}
             {activeTab === 'appointments' && (
               <div>
                 {appointments.length > 0 ? (
-                  appointments.map(appointment => (
-                    <AppointmentCard key={appointment.id} appointment={appointment} />
-                  ))
+                  <div className="row g-3">
+                    {appointments.map(appointment => (
+                      <div key={appointment.id} className="col-12">
+                        <AppointmentCard appointment={appointment} />
+                      </div>
+                    ))}
+                  </div>
                 ) : (
-                  <div className="alert alert-info">
-                    <i className="bi bi-info-circle me-2"></i>
-                    No appointments currently
+                  <div className="alert alert-info d-flex align-items-center">
+                    <i className="bi bi-info-circle me-2 fs-5"></i>
+                    <span>No appointments currently</span>
                   </div>
                 )}
               </div>
@@ -187,13 +207,17 @@ const Dashboard = () => {
             {activeTab === 'history' && (
               <div>
                 {medicalHistory.length > 0 ? (
-                  medicalHistory.map(record => (
-                    <MedicalHistoryCard key={record.id} record={record} />
-                  ))
+                  <div className="row g-3">
+                    {medicalHistory.map(record => (
+                      <div key={record.id} className="col-12">
+                        <MedicalHistoryCard record={record} />
+                      </div>
+                    ))}
+                  </div>
                 ) : (
-                  <div className="alert alert-info">
-                    <i className="bi bi-info-circle me-2"></i>
-                    No medical history currently
+                  <div className="alert alert-info d-flex align-items-center">
+                    <i className="bi bi-info-circle me-2 fs-5"></i>
+                    <span>No medical history currently</span>
                   </div>
                 )}
               </div>
@@ -203,13 +227,17 @@ const Dashboard = () => {
             {activeTab === 'tests' && (
               <div>
                 {labTests.length > 0 ? (
-                  labTests.map(test => (
-                    <LabTestCard key={test.id} test={test} />
-                  ))
+                  <div className="row g-3">
+                    {labTests.map(test => (
+                      <div key={test.id} className="col-12">
+                        <LabTestCard test={test} />
+                      </div>
+                    ))}
+                  </div>
                 ) : (
-                  <div className="alert alert-info">
-                    <i className="bi bi-info-circle me-2"></i>
-                    No lab tests currently
+                  <div className="alert alert-info d-flex align-items-center">
+                    <i className="bi bi-info-circle me-2 fs-5"></i>
+                    <span>No lab tests currently</span>
                   </div>
                 )}
               </div>
@@ -219,13 +247,17 @@ const Dashboard = () => {
             {activeTab === 'prescriptions' && (
               <div>
                 {prescriptions.length > 0 ? (
-                  prescriptions.map(prescription => (
-                    <PrescriptionCard key={prescription.id} prescription={prescription} />
-                  ))
+                  <div className="row g-3">
+                    {prescriptions.map(prescription => (
+                      <div key={prescription.id} className="col-12">
+                        <PrescriptionCard prescription={prescription} />
+                      </div>
+                    ))}
+                  </div>
                 ) : (
-                  <div className="alert alert-info">
-                    <i className="bi bi-info-circle me-2"></i>
-                    No prescriptions currently
+                  <div className="alert alert-info d-flex align-items-center">
+                    <i className="bi bi-info-circle me-2 fs-5"></i>
+                    <span>No prescriptions currently</span>
                   </div>
                 )}
               </div>

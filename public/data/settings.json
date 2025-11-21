@@ -1,11 +1,7 @@
 {
   "siteName": "EgyCare",
   "siteSlogan": "Healthcare Platform",
-  "logo": {
-    "iconClass": "bi-heart-pulse-fill",
-    "primaryColor": "#0B5FA5",
-    "secondaryColor": "#0E74C7"
-  },
+  "logo": "/favicon.ico",
   "contact": {
     "phone": "19888",
     "email": "info@egycare.com",
