@@ -134,51 +134,69 @@ const Dashboard = () => {
           </div>
 
           {/* Tab Navigation - Responsive */}
-          <div className="card shadow-sm border-0 mb-4">
-            <div className="card-body p-2 p-md-3">
-              <ul className="nav nav-pills nav-fill flex-column flex-md-row gap-2" role="tablist">
-                <li className="nav-item" role="presentation">
-                  <button
-                    className={`nav-link ${activeTab === 'appointments' ? 'active' : ''} d-flex align-items-center justify-content-center py-2 py-md-3`}
-                    onClick={() => setActiveTab('appointments')}
-                  >
-                    <i className="bi bi-calendar-event me-2"></i>
-                    <span className="d-none d-sm-inline">Appointments</span>
-                    <span className="d-sm-none">Appts</span>
-                  </button>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <button
-                    className={`nav-link ${activeTab === 'history' ? 'active' : ''} d-flex align-items-center justify-content-center py-2 py-md-3`}
-                    onClick={() => setActiveTab('history')}
-                  >
-                    <i className="bi bi-file-medical me-2"></i>
-                    <span className="d-none d-sm-inline">Medical History</span>
-                    <span className="d-sm-none">History</span>
-                  </button>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <button
-                    className={`nav-link ${activeTab === 'tests' ? 'active' : ''} d-flex align-items-center justify-content-center py-2 py-md-3`}
-                    onClick={() => setActiveTab('tests')}
-                  >
-                    <i className="bi bi-clipboard2-data me-2"></i>
-                    <span className="d-none d-sm-inline">Lab Tests</span>
-                    <span className="d-sm-none">Tests</span>
-                  </button>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <button
-                    className={`nav-link ${activeTab === 'prescriptions' ? 'active' : ''} d-flex align-items-center justify-content-center py-2 py-md-3`}
-                    onClick={() => setActiveTab('prescriptions')}
-                  >
-                    <i className="bi bi-capsule me-2"></i>
-                    <span className="d-none d-sm-inline">Prescriptions</span>
-                    <span className="d-sm-none">Rx</span>
-                  </button>
-                </li>
-              </ul>
-            </div>
+          <div className="mb-4">
+            <ul className="nav nav-fill flex-column flex-md-row gap-2 gap-md-3" role="tablist">
+              <li className="nav-item" role="presentation">
+                <button
+                  className={`nav-link d-flex align-items-center justify-content-center py-3 rounded-3 ${
+                    activeTab === 'appointments' 
+                      ? 'border border-2 border-primary text-primary bg-white fw-semibold' 
+                      : 'border border-1 text-muted bg-white'
+                  }`}
+                  onClick={() => setActiveTab('appointments')}
+                  style={{ transition: 'all 0.3s ease' }}
+                >
+                  <i className="bi bi-calendar-event me-2 fs-5"></i>
+                  <span className="d-none d-sm-inline">Appointments</span>
+                  <span className="d-sm-none">Appts</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button
+                  className={`nav-link d-flex align-items-center justify-content-center py-3 rounded-3 ${
+                    activeTab === 'history' 
+                      ? 'border border-2 border-primary text-primary bg-white fw-semibold' 
+                      : 'border border-1 text-muted bg-white'
+                  }`}
+                  onClick={() => setActiveTab('history')}
+                  style={{ transition: 'all 0.3s ease' }}
+                >
+                  <i className="bi bi-file-medical me-2 fs-5"></i>
+                  <span className="d-none d-sm-inline">Medical History</span>
+                  <span className="d-sm-none">History</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button
+                  className={`nav-link d-flex align-items-center justify-content-center py-3 rounded-3 ${
+                    activeTab === 'tests' 
+                      ? 'border border-2 border-primary text-primary bg-white fw-semibold' 
+                      : 'border border-1 text-muted bg-white'
+                  }`}
+                  onClick={() => setActiveTab('tests')}
+                  style={{ transition: 'all 0.3s ease' }}
+                >
+                  <i className="bi bi-clipboard2-data me-2 fs-5"></i>
+                  <span className="d-none d-sm-inline">Lab Tests</span>
+                  <span className="d-sm-none">Tests</span>
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button
+                  className={`nav-link d-flex align-items-center justify-content-center py-3 rounded-3 ${
+                    activeTab === 'prescriptions' 
+                      ? 'border border-2 border-primary text-primary bg-white fw-semibold' 
+                      : 'border border-1 text-muted bg-white'
+                  }`}
+                  onClick={() => setActiveTab('prescriptions')}
+                  style={{ transition: 'all 0.3s ease' }}
+                >
+                  <i className="bi bi-capsule me-2 fs-5"></i>
+                  <span className="d-none d-sm-inline">Prescriptions</span>
+                  <span className="d-sm-none">Rx</span>
+                </button>
+              </li>
+            </ul>
           </div>
 
           {/* Tab Content */}
