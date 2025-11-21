@@ -15,5 +15,10 @@
     "title": "Who We Are?",
     "subtitle": "EgyCare is Egypt's first medical appointment booking platform. We connect patients with the best specialists in all medical fields.",
     "description": "We strive to facilitate access to quality healthcare by providing an easy and secure platform that connects patients with specialized doctors."
+  },
+  "Image":{
+    "image" : "/images/EgyCare.png" 
   }
+
+  
 }

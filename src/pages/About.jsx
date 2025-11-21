@@ -38,7 +38,7 @@ const About = () => {
             </div>
             <div className="col-lg-6">
               <img
-                src="/placeholder.svg"
+                src={aboutData?.Image?.image || "/placeholder.svg"}
                 alt="About EgyCare"
                 className="img-fluid rounded shadow"
               />
