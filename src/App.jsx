@@ -33,7 +33,7 @@ const App = () => {
         fetch("/data/settings.json")
           .then(res => res.json())
           .then(data => {
-            const icon = document.querySelector("link[rel='icon']") as HTMLLinkElement;
+            const icon = document.querySelector("link[rel='icon']");
             if (icon) icon.href = data.logo ?? "/favicon.ico";
           })
           .catch(err => console.error(err));
