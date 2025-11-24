@@ -8,7 +8,7 @@ import SpecialtyProgress from '../components/SpecialtyProgress';
 import SpecialtyGrid from '../components//SpecialtyGrid';
 import NavigationButtons from '../components//NavigationButtons';
 
-import '../pages/Specialties.css';
+import '../styles/Specialties.css';
 import SearchBar from '../components/SearchBar';
 
 const Specialties = () => {
@@ -60,23 +60,30 @@ const Specialties = () => {
   return (
     <div>
       <Header />
-
+    {/* Start  Bar Of Progress Booking  */}
       <SpecialtyProgress step={step} />
+    {/* End  Bar Of Progress Booking  */}
 
+
+    {/* Start Specialties */}
       <section className="py-5 bg-light-egycare">
         <div className="container">
           <h2 className="section-title mb-5">All Medical Specialties</h2>
+          {/* Search Bar */}
           <SearchBar 
             value={searchTerm} 
             onChange={setSearchTerm} 
             placeholder="Search specialties..." 
           />
 
+
+          {/* Start Loading Specialties */}
           {loading ? (
             <div className="text-center">
               <div className="spinner-border text-primary"></div>
             </div>
           ) : (
+            
             <SpecialtyGrid
               specialties={filteredSpecialties}
               doctors={doctors}
@@ -86,6 +93,7 @@ const Specialties = () => {
             />
           )}
 
+          {/* Start Previous And Next Button  */}
           <NavigationButtons
             disabled={!selectedSpecialtyId}
             onPrev={() => setStep(prev => Math.max(prev - 1, 1))}
@@ -94,8 +102,11 @@ const Specialties = () => {
               navigate(`/specialty/${selectedSpecialtyId}`);
             }}
           />
+          {/* End Previous And Next Button  */}
         </div>
       </section>
+
+    {/* End Specialties */}
 
       <Footer />
     </div>

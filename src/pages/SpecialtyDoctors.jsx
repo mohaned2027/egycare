@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 import SpecialtyProgress from "../components/SpecialtyProgress";
 import NavigationButtons from "../components/NavigationButtons";
 import DoctorCard from "../components/DoctorCard";
-import DoctorGrid from "../components/DoctorGrid";
 
 const SpecialtyDoctors = () => {
   const { id: specialtyId } = useParams();
@@ -24,19 +23,19 @@ const SpecialtyDoctors = () => {
         const doctorsRes = await fetch("/data/doctors.json");
         const doctorsData = await doctorsRes.json();
 
-        // جلب بيانات التخصصات
+        // All Specialties
         const specialtiesRes = await fetch("/data/specialties.json");
         const specialtiesData = await specialtiesRes.json();
 
         const specIdNum = Number(specialtyId);
 
-        // فلترة الدكاترة حسب التخصص
+        // Filter Doctors When The Same Specialties
         const filteredDoctors = doctorsData.filter(
           (doc) => String(doc.specialtyId) === String(specIdNum)
         );
         setDoctors(filteredDoctors);
 
-        // فلترة التخصص الحالي حسب specialtyId
+        // Filter Specialties When The Same Specialties
         const currentSpecialty = specialtiesData.find(
           (spec) => Number(spec.id) === specIdNum
         );
@@ -61,7 +60,9 @@ const SpecialtyDoctors = () => {
   return (
     <div>
       <Header />
+       {/* Start  Bar Of Progress Booking  */}
       <SpecialtyProgress step={step} />
+      {/* End  Bar Of Progress Booking  */}
 
       <section className="py-5">
         <div className="container">
@@ -69,6 +70,7 @@ const SpecialtyDoctors = () => {
             {specialtyName ? `Doctors in ${specialtyName}` : "Doctors"}
           </h2>
 
+          {/* Start Loading Doctors In This Specialties */}
           {loading ? (
             <div className="text-center py-5">
               <div className="spinner-border text-primary"></div>
@@ -80,24 +82,24 @@ const SpecialtyDoctors = () => {
           ) : (
             <div className="row g-4">
               {doctors.map((doc) => (
-  <div key={doc.id} className="col-md-6 col-lg-4">
-    <DoctorCard
-      doctor={doc}
-      selected={selectedDoctorId === doc.id}
-      onClick={() => handleSelectDoctor(doc.id)}
-    />
-  </div>
-))}
-
+                <div key={doc.id} className="col-md-6 col-lg-4">
+                  <DoctorCard
+                    doctor={doc}
+                    selected={selectedDoctorId === doc.id}
+                    onClick={() => handleSelectDoctor(doc.id)}
+                  />
+                </div>
+              ))}
             </div>
           )}
 
+          {/* Previous And Next Button  */}
           <NavigationButtons
             disabled={!selectedDoctorId}
             onPrev={() => navigate("/specialties")}
             onNext={() => navigate(`/booking/${selectedDoctorId}`)}
-            prevText="الخلف"
-            nextText="التالي"
+            prevText="Previous"
+            nextText="Next"
           />
         </div>
       </section>

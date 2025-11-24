@@ -17,8 +17,8 @@ const LabTestCard = ({ test }) => {
             <p className="text-muted mb-1">
               <i className="bi bi-building me-1"></i>
 
-     Lab: {test.labName}
- cde799b52842a66568b1f3818d27af5328632d46
+                Lab: {test.labName}
+            cde799b52842a66568b1f3818d27af5328632d46
             </p>
             <p className="text-muted mb-0">
               <i className="bi bi-calendar3 me-1"></i>

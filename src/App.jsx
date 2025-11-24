@@ -8,7 +8,6 @@ import Specialties from "./pages/Specialties";
 import SpecialtyDoctors from "./pages/SpecialtyDoctors";
 import Booking from "./pages/Booking";
 import Confirm from "./pages/Confirm";
-import AdminDashboard from "./pages/AdminDashboard";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -78,7 +77,6 @@ const App = () => {
           }
         />
 
-        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
 

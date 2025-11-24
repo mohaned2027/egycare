@@ -122,7 +122,7 @@ const Home = () => {
               <div className="quick-search-card">
                 <h3>Quick Search</h3>
                 <form>
-                  <div className="mb-3">
+                  <div className="mb-1">
                     <label className="form-label">Choose Specialty</label>
                     <select className="form-select" onChange={handleSpecialtyChange}>
                       <option value="">Choose Specialty</option>
@@ -134,7 +134,7 @@ const Home = () => {
                     </select>
                   </div>
 
-                  <div className="mb-3">
+                  <div className="mb-5">
                     <label className="form-label">Choose Doctor</label>
                     <select
                       className="form-select"
@@ -149,7 +149,7 @@ const Home = () => {
                       ))}
                     </select>
                   </div>
-
+{/* 
                   <div className="mb-3">
                     <label className="form-label">Choose Governorate</label>
                     <select className="form-select">
@@ -163,7 +163,7 @@ const Home = () => {
                   <div className="mb-3">
                     <label className="form-label">Choose Date</label>
                     <input type="date" className="form-control" />
-                  </div>
+                  </div> */}
 
                   <button
                     type="button"

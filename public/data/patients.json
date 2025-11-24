@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "أحمد محمد",
+     "name": "Ahmed Mohamed",
     "email": "ahmed@example.com",
     "password": "123456",
     "phone": "01012345678",
@@ -17,7 +17,7 @@
   },
   {
     "id": 2,
-    "name": "فاطمة علي",
+    "name": "Fatma Ali",
     "email": "fatma@example.com",
     "password": "123456",
     "phone": "01098765432",
@@ -33,7 +33,7 @@
   },
   {
     "id": 3,
-    "name": "محمود حسن",
+    "name": "Mahmoud Hassan",
     "email": "mahmoud@example.com",
     "password": "123456",
     "phone": "01123456789",
